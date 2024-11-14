@@ -2,7 +2,7 @@
 import { Palette } from 'lucide-vue-next'
 import { ref, onMounted, onUnmounted } from 'vue'
 import ThemeSwitcher from './ThemeSwitcher.vue'
-import AccentColorPicker from './AccentColorPicker.vue'
+import ButtonColorPicker from './ButtonColorPicker.vue'
 import ScrollBarToggle from './ScrollBarToggle.vue'
 
 const isOpen = ref(false)
@@ -61,7 +61,7 @@ onUnmounted(() => {
               <ThemeSwitcher />
             </div>
             <div>
-              <AccentColorPicker />
+              <ButtonColorPicker />
             </div>
             <div>
               <ScrollBarToggle />

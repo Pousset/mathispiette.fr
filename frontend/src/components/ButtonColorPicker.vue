@@ -1,9 +1,9 @@
 <script setup>
 import { CheckIcon } from 'lucide-vue-next'
 import colors from 'tailwindcss/colors'
-import { validColors, useAccentColor } from '@/utils/accentColorManager.js'
+import { validColors, useButtonColor } from '@/utils/ButtonColorManager.js'
 
-const { selectedColor, displayColor, setAccentColor } = useAccentColor()
+const { selectedColor, displayColor, setButtonColor } = useButtonColor()
 
 const getButtonClass = color => ({
   'ring-2 ring-offset-2 ring-white dark:ring-gray-900':
@@ -15,7 +15,7 @@ const getButtonClass = color => ({
   <div class="w-full space-y-3">
     <div class="flex items-center justify-between">
       <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
-        Accent Color:
+        Button Color:
         <span class="font-semibold text-primary capitalize">{{
           displayColor
         }}</span>
@@ -28,7 +28,7 @@ const getButtonClass = color => ({
         class="w-6 h-6 rounded-full transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-gray-900"
         :class="getButtonClass(color)"
         :style="{ backgroundColor: colors[color][500] }"
-        @click="setAccentColor(color)"
+        @click="setButtonColor(color)"
       >
         <CheckIcon
           v-if="color === selectedColor"
