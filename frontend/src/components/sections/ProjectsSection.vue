@@ -15,7 +15,7 @@ const data = [
     description:
       "v2 définitive de mon Portfolio, je voulais déployer plusieurs fonctionnalitées sur ce domaine ci : Mon Portfolio Publique, ainsi que mon Saas et les données lié à ma gestion du quotidien !  c'est ainsi qu'est crée mathispiette.fr",
     link: 'https://github.com/Pousset/PortfolioVue',
-    technologies: ['Vue', 'JS', 'Shell'],
+    technologies: ['Vue', 'JS', 'Shell', "Tailwind"],
   },
   {
     title: 'Fedhubs.dart',
@@ -42,7 +42,7 @@ const data = [
     title: 'Portfolio Perso v1',
     description:
       'v1 Simple et basique, voici les 2mots clés qui ont bati ce projet',
-    link: 'https://github.com/Pousset/mathispiette.fr',
+    link: 'https://pousset.github.io/mathispiette.fr/',
     technologies: ['HTML', 'CSS'],
   },
 ]
