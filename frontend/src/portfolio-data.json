@@ -4,25 +4,25 @@
       "name": "Home",
       "path": "home",
       "component": "HomeSection",
-      "pageTitle": "John Doe | Web Developer & Designer"
+      "pageTitle": "Mathis PIETTE | Web Developer & Designer"
     },
     {
       "name": "About",
       "path": "about",
       "component": "AboutSection",
-      "pageTitle": "About Me | John Doe"
+      "pageTitle": "About Me | Mathis PIETTE"
     },
     {
       "name": "Projects",
       "path": "projects",
       "component": "ProjectsSection",
-      "pageTitle": "Projects | John Doe"
+      "pageTitle": "Projects | Mathis PIETTE"
     },
     {
       "name": "Contact",
       "path": "contacts",
       "component": "ContactSection",
-      "pageTitle": "Contact Me | John Doe"
+      "pageTitle": "Contact Me | Mathis PIETTE"
     }
   ]
 }
