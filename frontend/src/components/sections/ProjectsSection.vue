@@ -5,35 +5,41 @@ import Carousel from '../TheCarousel.vue';
 
 const data = [
     {
-        "title": "Project 1",
-        "description": "A Vue.js web application for task management.",
-        "link": "#",
-        "technologies": ["Vue.js", "Vuex", "Tailwind CSS", "Firebase"]
+        "title": "Fedhubs.org",
+        "description": "Site de présentation de l'application Fedhubs, divisé en 3 parties : particulier + professionnel + partenaire",
+        "link": "https://fedhubs.org",
+        "technologies": ["React", "Bootstrap", "Firebase"]
     },
     {
-        "title": "Project 2",
-        "description": "An e-commerce platform built with Vue and Node.js.",
-        "link": "#",
-        "technologies": ["Vue.js", "Node.js", "Express", "MongoDB"]
+        "title": "Fedhubs.com",
+        "description": "première version du Site de présentation de l'application Fedhubs, divisé en 3 parties : particulier + professionnel + partenaire",
+        "link": "https://fedhubs.com/",
+        "technologies": ["Bootstrap", "Firebase"]
     },
     {
-        "title": "Project 3",
-        "description": "A responsive portfolio website using Vue and Tailwind CSS.",
-        "link": "#",
-        "technologies": ["Vue.js", "Tailwind CSS", "Vite"]
+        "title": "Fedhubs.dart",
+        "description": "Fedhubs est une application qui permet aux consommateurs de trouver le restaurant idéal et de façon convivial.",
+        "link": "https://fedhubs.org/",
+        "technologies": ["Flutter", "Firebase"]
     },
     {
-        "title": "Project 4",
-        "description": "A real-time chat application with Vue and Firebase.",
-        "link": "#",
-        "technologies": ["Vue.js", "Firebase", "Vuex", "Vue Router"]
+        "title": "Portfolio Perso v2",
+        "description": "v2 définitive de mon Portfolio, je voulais déployer plusieurs fonctionnalitées sur ce domaine ci : Mon Portfolio Publique, ainsi que mon Saas et les données lié à ma gestion du quotidien !  c'est ainsi qu'est crée mathispiette.fr",
+        "link": "https://github.com/Pousset/PortfolioVue",
+        "technologies": ["Vue", "JS", "Shell"]
     },
     {
-        "title": "Project 5",
-        "description": "Another real-time chat application with Vue and Firebase.",
-        "link": "#",
-        "technologies": ["Vue.js", "Firebase", "Vuex", "Vue Router"]
-    }
+        "title": "Bot Betting ",
+        "description": "création d'un bot pour un serveur Discord ayant pour but la gestion de paris sportif dans une multitudes de sports, le but étant de scrappé les données pour les récupérer de façon automatique et ainsi automatisé les résultats",
+        "link": "https://github.com/Pousset/botBeting",
+        "technologies": ["JS"]
+    },
+    {
+        "title": "Portfolio Perso v1",
+        "description": "v1 Simple et basique, voici les 2mots clés qui ont bati ce projet",
+        "link": "https://github.com/Pousset/mathispiette.fr",
+        "technologies": ["HTML", "CSS"]
+    },
 ]
 
 const responsiveOptions = ref([
