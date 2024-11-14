@@ -25,7 +25,7 @@ const generateStars = () => {
     shape: starShapes[Math.floor(Math.random() * starShapes.length)],
     left: `${Math.random() * 100}%`,
     top: `${Math.random() * 100}%`,
-    duration: 2 + Math.random() * 3,
+    duration: 1 + Math.random() * 3,
   }))
 }
 

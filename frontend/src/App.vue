@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
-import { loadSavedColor } from '@/utils/accentColorManager'
+import { loadSavedColor } from '@/utils/ButtonColorManager'
 import { initializeTheme } from '@/utils/themeManager'
 
 onMounted(() => {

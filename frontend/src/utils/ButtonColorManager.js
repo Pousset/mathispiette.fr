@@ -1,4 +1,4 @@
-// accentColorUtils.js
+// ButtonColorUtils.js
 import { ref, computed } from 'vue'
 import colors from 'tailwindcss/colors'
 
@@ -48,11 +48,11 @@ export function applyColor(colorName) {
 }
 
 export function loadSavedColor() {
-  const savedColor = localStorage.getItem('accentColor')
+  const savedColor = localStorage.getItem('ButtonColor')
   const validatedColor = isValidColor(savedColor) ? savedColor : DEFAULT_COLOR
 
   if (savedColor !== validatedColor) {
-    localStorage.setItem('accentColor', validatedColor)
+    localStorage.setItem('ButtonColor', validatedColor)
   }
 
   applyColor(validatedColor)
@@ -60,7 +60,7 @@ export function loadSavedColor() {
 }
 
 // Alias for loadSavedColor to maintain consistency with theme manager
-export const initializeAccentColor = loadSavedColor
+export const initializeButtonColor = loadSavedColor
 
 export function saveColor(colorName) {
   if (!isValidColor(colorName)) {
@@ -70,14 +70,14 @@ export function saveColor(colorName) {
     colorName = DEFAULT_COLOR
   }
 
-  localStorage.setItem('accentColor', colorName)
+  localStorage.setItem('ButtonColor', colorName)
   applyColor(colorName)
 }
 
-export function useAccentColor() {
+export function useButtonColor() {
   const selectedColor = ref(loadSavedColor())
 
-  function setAccentColor(colorName) {
+  function setButtonColor(colorName) {
     if (!isValidColor(colorName)) {
       console.warn(
         `Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`,
@@ -98,7 +98,7 @@ export function useAccentColor() {
   return {
     selectedColor,
     displayColor,
-    setAccentColor,
+    setButtonColor,
     validColors,
   }
 }

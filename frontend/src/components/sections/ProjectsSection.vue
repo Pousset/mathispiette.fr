@@ -43,7 +43,7 @@ const data = [
     description:
       'v1 Simple et basique, voici les 2mots clés qui ont bati ce projet',
     link: 'https://pousset.github.io/mathispiette.fr/',
-    technologies: ['HTML', 'CSS'],
+    technologies: ['HTML', 'CSS', "deployment"],
   },
 ]
 
