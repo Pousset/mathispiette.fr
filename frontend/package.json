@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "format": "prettier --write src/",
     "preview": "vite preview",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "build": "vite build",
+    "update": "vite update"
   },
   "dependencies": {
     "lucide-vue-next": "^0.453.0",

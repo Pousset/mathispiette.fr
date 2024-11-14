@@ -44,10 +44,10 @@ provide('sections', sections)
 const sectionComponents = Object.fromEntries(
   sections.map(section => [
     section.component,
-    defineAsyncComponent(() =>
-      import(`@/components/sections/${section.component}.vue`)
-    )
-  ])
+    defineAsyncComponent(
+      () => import(`@/components/sections/${section.component}.vue`),
+    ),
+  ]),
 )
 
 // Refs and state management
@@ -68,7 +68,7 @@ const navigateToSection = (targetPath, smooth = true) => {
   isNavigating.value = true
   const scrollOptions = {
     top: targetIndex * window.innerHeight,
-    behavior: smooth ? 'smooth' : 'auto'
+    behavior: smooth ? 'smooth' : 'auto',
   }
 
   scrollContainer.value?.scrollTo(scrollOptions)
@@ -97,51 +97,61 @@ const handleScroll = debounce(() => {
 }, CONFIG.SCROLL.DEBOUNCE)
 
 // Touch handlers
-const handleTouchStart = (e) => {
+const handleTouchStart = e => {
   touchStartY.value = e.touches[0].clientY
 }
 
-const handleTouchMove = (e) => {
+const handleTouchMove = e => {
   e.preventDefault()
 }
 
-const handleTouchEnd = (e) => {
+const handleTouchEnd = e => {
   const touchEndY = e.changedTouches[0].clientY
   const deltaY = touchStartY.value - touchEndY
 
   if (Math.abs(deltaY) < CONFIG.SCROLL.THRESHOLD) return
 
-  const currentIndex = sections.findIndex(section => section.path === currentSection.value)
-  const newIndex = deltaY > 0
-    ? Math.min(currentIndex + 1, sections.length - 1)
-    : Math.max(currentIndex - 1, 0)
+  const currentIndex = sections.findIndex(
+    section => section.path === currentSection.value,
+  )
+  const newIndex =
+    deltaY > 0
+      ? Math.min(currentIndex + 1, sections.length - 1)
+      : Math.max(currentIndex - 1, 0)
 
   navigateToSection(sections[newIndex].path)
 }
 
 // Wheel handler with improved throttling
-const handleWheel = debounce((e) => {
-  const now = Date.now()
-  if (now - lastScrollTime.value < CONFIG.SCROLL.COOLDOWN) return
+const handleWheel = debounce(
+  e => {
+    const now = Date.now()
+    if (now - lastScrollTime.value < CONFIG.SCROLL.COOLDOWN) return
 
-  const currentIndex = sections.findIndex(section => section.path === currentSection.value)
-  const newIndex = e.deltaY > 0
-    ? Math.min(currentIndex + 1, sections.length - 1)
-    : Math.max(currentIndex - 1, 0)
+    const currentIndex = sections.findIndex(
+      section => section.path === currentSection.value,
+    )
+    const newIndex =
+      e.deltaY > 0
+        ? Math.min(currentIndex + 1, sections.length - 1)
+        : Math.max(currentIndex - 1, 0)
 
-  navigateToSection(sections[newIndex].path)
-  lastScrollTime.value = now
-}, CONFIG.SCROLL.DEBOUNCE, { leading: true })
+    navigateToSection(sections[newIndex].path)
+    lastScrollTime.value = now
+  },
+  CONFIG.SCROLL.DEBOUNCE,
+  { leading: true },
+)
 
 // Utility functions
-const updatePageTitle = (path) => {
+const updatePageTitle = path => {
   const section = sections.find(s => s.path === path)
   if (section) {
     document.title = `${section.pageTitle}`
   }
 }
 
-const handleRouteChange = (to) => {
+const handleRouteChange = to => {
   const path = to.path.slice(1)
   if (!path || !sections.some(section => section.path === path)) return
   navigateToSection(path, true)
@@ -156,7 +166,7 @@ onMounted(() => {
       router.push({
         path: sections.some(s => s.path === redirectFrom)
           ? `/${redirectFrom}`
-          : '/'
+          : '/',
       })
     } else {
       const initialPath = router.currentRoute.value.path
@@ -174,21 +184,40 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relative h-screen overflow-hidden bg-slate-100 dark:bg-gray-900 transition-colors duration-700">
+  <div
+    class="relative h-screen overflow-hidden bg-slate-100 dark:bg-gray-900 transition-colors duration-700"
+  >
     <StarryBackground class="absolute inset-0" />
     <!-- Main scroll container with dynamic scrollbar classes -->
-    <div ref="scrollContainer" @scroll="handleScroll" @touchstart="handleTouchStart" @touchmove="handleTouchMove"
-      @touchend="handleTouchEnd" @wheel="handleWheel" :class="[
+    <div
+      ref="scrollContainer"
+      @scroll="handleScroll"
+      @touchstart="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @touchend="handleTouchEnd"
+      @wheel="handleWheel"
+      :class="[
         'relative z-10 h-full overflow-y-auto snap-y snap-mandatory scroll-smooth',
-        showScrollbar ? 'scrollbar-visible' : 'scrollbar-hidden'
-      ]">
-      <section v-for="section in sections" :key="section.path"
-        class="h-screen flex items-center justify-center snap-start">
-        <component :is="sectionComponents[section.component]" class="w-full max-w-7xl px-4 sm:px-6 lg:px-8" />
+        showScrollbar ? 'scrollbar-visible' : 'scrollbar-hidden',
+      ]"
+    >
+      <section
+        v-for="section in sections"
+        :key="section.path"
+        class="h-screen flex items-center justify-center snap-start"
+      >
+        <component
+          :is="sectionComponents[section.component]"
+          class="w-full max-w-7xl px-4 sm:px-6 lg:px-8"
+        />
       </section>
     </div>
-    <NavigationDots :sections="sections" :currentSection="currentSection" @navigate="navigateToSection"
-      class="fixed right-4 top-1/2 -translate-y-1/2 z-20" />
+    <NavigationDots
+      :sections="sections"
+      :currentSection="currentSection"
+      @navigate="navigateToSection"
+      class="fixed right-4 top-1/2 -translate-y-1/2 z-20"
+    />
     <SettingsButton class="z-20" />
   </div>
 </template>
