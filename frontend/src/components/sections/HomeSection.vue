@@ -58,7 +58,7 @@ const alternateText = async () => {
     if (data.secondaryName) {
         while (true) {
             await typeWriter(alternatingTextRef.value, data.name, 100)
-            await new Promise(resolve => setTimeout(resolve, 5000))
+            await new Promise(resolve => setTimeout(resolve, 2000))
             await eraseText(alternatingTextRef.value)
             await typeWriter(alternatingTextRef.value, data.secondaryName, 100)
             await new Promise(resolve => setTimeout(resolve, 3000))
