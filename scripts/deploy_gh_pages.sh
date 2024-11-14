@@ -54,6 +54,12 @@ if [ ! -d "node_modules" ]; then
     npm install
 fi
 
+# Update dependencies 
+
+    echo "📦 Updating dependencies..."
+    npm update
+
+
 # Build the project
 echo "🔨 Building the project..."
 npm run build
