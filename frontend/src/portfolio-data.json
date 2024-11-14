@@ -1,0 +1,28 @@
+{
+  "sections": [
+    {
+      "name": "Home",
+      "path": "home",
+      "component": "HomeSection",
+      "pageTitle": "John Doe | Web Developer & Designer"
+    },
+    {
+      "name": "About",
+      "path": "about",
+      "component": "AboutSection",
+      "pageTitle": "About Me | John Doe"
+    },
+    {
+      "name": "Projects",
+      "path": "projects",
+      "component": "ProjectsSection",
+      "pageTitle": "Projects | John Doe"
+    },
+    {
+      "name": "Contact",
+      "path": "contacts",
+      "component": "ContactSection",
+      "pageTitle": "Contact Me | John Doe"
+    }
+  ]
+}
