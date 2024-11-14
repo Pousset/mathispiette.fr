@@ -11,10 +11,10 @@ const data = [
         "technologies": ["React", "Bootstrap", "Firebase"]
     },
     {
-        "title": "Fedhubs.com",
-        "description": "première version du Site de présentation de l'application Fedhubs, divisé en 3 parties : particulier + professionnel + partenaire",
-        "link": "https://fedhubs.com/",
-        "technologies": ["Bootstrap", "Firebase"]
+        "title": "Portfolio Perso v2",
+        "description": "v2 définitive de mon Portfolio, je voulais déployer plusieurs fonctionnalitées sur ce domaine ci : Mon Portfolio Publique, ainsi que mon Saas et les données lié à ma gestion du quotidien !  c'est ainsi qu'est crée mathispiette.fr",
+        "link": "https://github.com/Pousset/PortfolioVue",
+        "technologies": ["Vue", "JS", "Shell"]
     },
     {
         "title": "Fedhubs.dart",
@@ -23,10 +23,10 @@ const data = [
         "technologies": ["Flutter", "Firebase"]
     },
     {
-        "title": "Portfolio Perso v2",
-        "description": "v2 définitive de mon Portfolio, je voulais déployer plusieurs fonctionnalitées sur ce domaine ci : Mon Portfolio Publique, ainsi que mon Saas et les données lié à ma gestion du quotidien !  c'est ainsi qu'est crée mathispiette.fr",
-        "link": "https://github.com/Pousset/PortfolioVue",
-        "technologies": ["Vue", "JS", "Shell"]
+        "title": "Fedhubs.com",
+        "description": "première version du Site de présentation de l'application Fedhubs, divisé en 3 parties : particulier + professionnel + partenaire",
+        "link": "https://fedhubs.com/",
+        "technologies": ["Bootstrap", "Firebase"]
     },
     {
         "title": "Bot Betting ",
