@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import { Palette } from 'lucide-vue-next'
 import ThemeSwitcher from './ThemeSwitcher.vue'
 import ButtonColorPicker from './ButtonColorPicker.vue'
@@ -18,9 +18,11 @@ const closePopover = event => {
     isOpen.value = false
   }
 }
+
 onMounted(() => {
   document.addEventListener('click', closePopover)
 })
+
 onUnmounted(() => {
   document.removeEventListener('click', closePopover)
 })
@@ -30,7 +32,7 @@ onUnmounted(() => {
   <div class="relative">
     <button
       class="theme-customizer-button fixed bottom-4 right-4 z-50 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-      @click="toggle"
+      @click.stop="toggle" 
       aria-haspopup="true"
       :aria-expanded="isOpen"
     >
