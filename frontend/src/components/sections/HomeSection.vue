@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed, inject } from 'vue'
+import { toggle } from '@/utils/toggle.js' // Importez la fonction toggle
 
 const data = {
   greeting: 'Hey there!',
@@ -112,13 +113,12 @@ onUnmounted(() => {
         <p class="text-lg text-gray-600 dark:text-gray-400">
           {{ data.subtitle }}
         </p>
-        <router-link
-          v-if="contactSection"
-          :to="'/' + contactSection.path"
+        <button
+          @click="toggle" 
           class="inline-block px-8 py-3 font-bold text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-gradient-to-bl from-primary-400 to-primary-600 hover:from-primary-500 hover:to-primary-700 dark:from-primary-500 dark:to-primary-700 dark:hover:from-primary-600 dark:hover:to-primary-800"
         >
           Get in Touch
-        </router-link>
+        </button>
       </div>
     </div>
   </div>

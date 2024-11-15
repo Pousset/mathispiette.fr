@@ -15,10 +15,10 @@ provide('showScrollbar', showScrollbar) // Provide to child components
 // Configuration constants
 const CONFIG = {
   SCROLL: {
-    COOLDOWN: 500, // ms between scroll actions
+    COOLDOWN: 2000, // ms between scroll actions
     THRESHOLD: 50, // minimum pixels for swipe detection
     DEBOUNCE: 50, // ms for debounce delay
-    ANIMATION_DURATION: 100, // ms for smooth scroll
+    ANIMATION_DURATION: 1000, // ms for smooth scroll
   },
   LAYOUT: {
     Z_INDICES: {

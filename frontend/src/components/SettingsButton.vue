@@ -1,18 +1,13 @@
 <script setup>
-import { Palette } from 'lucide-vue-next'
 import { ref, onMounted, onUnmounted } from 'vue'
+import { Palette } from 'lucide-vue-next'
 import ThemeSwitcher from './ThemeSwitcher.vue'
 import ButtonColorPicker from './ButtonColorPicker.vue'
 import TextColorPicker from './TextColorPicker.vue'
-import TitleColorPicker from './TitleColorPicker.vue' 
+import TitleColorPicker from './TitleColorPicker.vue'
 import ResetTextColorButton from './ResetTextColorButton.vue'
 import ScrollBarToggle from './ScrollBarToggle.vue'
-
-const isOpen = ref(false)
-
-const toggle = () => {
-  isOpen.value = !isOpen.value
-}
+import { isOpen, toggle } from '@/utils/toggle.js' // Importez la fonction toggle
 
 const closePopover = event => {
   if (
@@ -23,11 +18,9 @@ const closePopover = event => {
     isOpen.value = false
   }
 }
-
 onMounted(() => {
   document.addEventListener('click', closePopover)
 })
-
 onUnmounted(() => {
   document.removeEventListener('click', closePopover)
 })
