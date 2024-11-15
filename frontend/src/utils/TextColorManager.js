@@ -1,4 +1,3 @@
-// ButtonColorUtils.js
 import { ref, computed } from 'vue'
 import colors from 'tailwindcss/colors'
 
@@ -14,7 +13,6 @@ export const validColors = [
   'cyan',
   'sky',
   'blue',
-  'white',
   'indigo',
   'violet',
   'purple',
@@ -25,16 +23,16 @@ export const validColors = [
   'gray',
   'zinc',
   'neutral',
-  'stone',
+  'white', // Remplacé ici
 ]
 
-const DEFAULT_COLOR = 'yellow'
+const DEFAULT_COLOR = 'white'
 
 function isValidColor(color) {
-  return validColors.includes(color) && colors[color] && colors[color][500]
+  return validColors.includes(color) && colors[color] && colors[color][600]
 }
 
-export function applyColor(colorName) {
+export function applyTextColor(colorName) {
   if (!isValidColor(colorName)) {
     console.warn(
       `Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`,
@@ -43,27 +41,22 @@ export function applyColor(colorName) {
   }
 
   const colorShades = colors[colorName]
-  Object.entries(colorShades).forEach(([shade, value]) => {
-    document.documentElement.style.setProperty(`--primary-${shade}`, value)
-  })
+  document.documentElement.style.setProperty('--text-color', colorShades[600])
 }
 
-export function loadSavedColor() {
-  const savedColor = localStorage.getItem('ButtonColor')
+export function loadSavedTextColor() {
+  const savedColor = localStorage.getItem('TextColor')
   const validatedColor = isValidColor(savedColor) ? savedColor : DEFAULT_COLOR
 
   if (savedColor !== validatedColor) {
-    localStorage.setItem('ButtonColor', validatedColor)
+    localStorage.setItem('TextColor', validatedColor)
   }
 
-  applyColor(validatedColor)
+  applyTextColor(validatedColor)
   return validatedColor
 }
 
-// Alias for loadSavedColor to maintain consistency with theme manager
-export const initializeButtonColor = loadSavedColor
-
-export function saveColor(colorName) {
+export function saveTextColor(colorName) {
   if (!isValidColor(colorName)) {
     console.warn(
       `Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`,
@@ -71,14 +64,19 @@ export function saveColor(colorName) {
     colorName = DEFAULT_COLOR
   }
 
-  localStorage.setItem('ButtonColor', colorName)
-  applyColor(colorName)
+  localStorage.setItem('TextColor', colorName)
+  applyTextColor(colorName)
 }
 
-export function useButtonColor() {
-  const selectedColor = ref(loadSavedColor())
+export function resetTextColor() {
+  localStorage.removeItem('TextColor')
+  applyTextColor(DEFAULT_COLOR)
+}
 
-  function setButtonColor(colorName) {
+export function useTextColor() {
+  const selectedColor = ref(loadSavedTextColor())
+
+  function setTextColor(colorName) {
     if (!isValidColor(colorName)) {
       console.warn(
         `Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`,
@@ -87,7 +85,7 @@ export function useButtonColor() {
     }
 
     selectedColor.value = colorName
-    saveColor(colorName)
+    saveTextColor(colorName)
   }
 
   const displayColor = computed(() => {
@@ -99,7 +97,8 @@ export function useButtonColor() {
   return {
     selectedColor,
     displayColor,
-    setButtonColor,
+    setTextColor,
+    resetTextColor,
     validColors,
   }
 }

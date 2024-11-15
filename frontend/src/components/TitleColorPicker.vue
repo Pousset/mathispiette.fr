@@ -4,7 +4,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import ThemeSwitcher from './ThemeSwitcher.vue'
 import ButtonColorPicker from './ButtonColorPicker.vue'
 import TextColorPicker from './TextColorPicker.vue'
-import TitleColorPicker from './TitleColorPicker.vue' 
+import TitleColorPicker from './TitleColorPicker.vue'
 import ResetTextColorButton from './ResetTextColorButton.vue'
 import ScrollBarToggle from './ScrollBarToggle.vue'
 
@@ -70,7 +70,7 @@ onUnmounted(() => {
               <TextColorPicker />
             </div>
             <div>
-              <TitleColorPicker />
+              <TitleColorPicker /> <!-- Ajouté ici -->
             </div>
             <div>
               <ResetTextColorButton />

@@ -18,3 +18,14 @@
   --primary-900: rgb(49, 46, 129);
   --primary-950: rgb(30, 27, 75);
 }
+body {
+  color: var(
+    --text-color,
+    rgb(75 85 99 / var(--tw-text-opacity, 1))
+  ); /* #4b5563 */
+}
+
+span .title {
+  color: var(--text-color, inherit);
+}
+

@@ -13,37 +13,38 @@ const data = [
   {
     title: 'Portfolio Perso v2',
     description:
-      "v2 définitive de mon Portfolio, je voulais déployer plusieurs fonctionnalitées sur ce domaine ci : Mon Portfolio Publique, ainsi que mon Saas et les données lié à ma gestion du quotidien !  c'est ainsi qu'est crée mathispiette.fr",
+      "v2 définitive de mon Portfolio, je voulais déployer plusieurs fonctionnalités sur ce domaine-ci : mon Portfolio Publique, ainsi que mon Saas et les données liées à ma gestion du quotidien ! C'est ainsi qu'est crée mathispiette.fr",
     link: 'https://github.com/Pousset/PortfolioVue',
-    technologies: ['Vue', 'JS', 'Shell', "Tailwind"],
+    technologies: ['Vue', 'JS', 'Shell', 'Tailwind'],
   },
   {
     title: 'Fedhubs.dart',
     description:
-      'Fedhubs est une application qui permet aux consommateurs de trouver le restaurant idéal et de façon convivial.',
+      'Fedhubs est une application qui permet aux consommateurs de trouver le restaurant idéal et de façon conviviale.',
     link: 'https://fedhubs.org/',
     technologies: ['Flutter', 'Firebase'],
   },
   {
     title: 'Fedhubs.com',
     description:
-      "première version du Site de présentation de l'application Fedhubs, divisé en 3 parties : particulier + professionnel + partenaire",
+      "Première version du Site de présentation de l'application Fedhubs, divisé en 3 parties : particulier + professionnel + partenaire",
+
     link: 'https://fedhubs.com/',
     technologies: ['Bootstrap', 'Firebase'],
   },
   {
     title: 'Bot Betting ',
     description:
-      "création d'un bot pour un serveur Discord ayant pour but la gestion de paris sportif dans une multitudes de sports, le but étant de scrappé les données pour les récupérer de façon automatique et ainsi automatisé les résultats",
+      "Création d'un bot pour un serveur Discord ayant pour but la gestion de paris sportifs dans une multitude de sports, le but étant de scrappé les données pour les récupérer de façon automatique et ainsi automatisée les résultats",
     link: 'https://github.com/Pousset/botBeting',
     technologies: ['JS'],
   },
   {
     title: 'Portfolio Perso v1',
     description:
-      'v1 Simple et basique, voici les 2mots clés qui ont bati ce projet',
+      'v1 Simple et basique, voici les 2 mots clés qui ont bâti ce projet',
     link: 'https://pousset.github.io/mathispiette.fr/',
-    technologies: ['HTML', 'CSS', "deployment"],
+    technologies: ['HTML', 'CSS', 'deployment'],
   },
 ]
 
