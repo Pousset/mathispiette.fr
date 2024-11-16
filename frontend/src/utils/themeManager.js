@@ -8,12 +8,10 @@ export const Theme = {
 
 Object.freeze(Theme)
 
-export function getSystemTheme() {
-  const prefersDark =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  const systemTheme = prefersDark ? Theme.DARK : Theme.LIGHT
-  return Object.values(Theme).includes(systemTheme) ? systemTheme : Theme.DARK
+function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? Theme.DARK
+    : Theme.LIGHT
 }
 
 function applyTheme(theme) {
@@ -43,7 +41,6 @@ export function initializeTheme() {
 }
 
 export function useTheme() {
-  // Initialize with the current theme
   const savedTheme = localStorage.getItem('theme')
   const theme = ref(
     Object.values(Theme).includes(savedTheme) ? savedTheme : Theme.DARK,
@@ -70,7 +67,6 @@ export function useTheme() {
     applyTheme(newTheme)
   }
 
-  // Watch for system theme changes
   if (typeof window !== 'undefined') {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     mediaQuery.addEventListener('change', () => {
