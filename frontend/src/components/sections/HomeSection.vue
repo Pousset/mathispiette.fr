@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted, onUnmounted, } from 'vue'
-import { toggle } from '@/utils/toggle.js' // Importez la fonction toggle
+import { ref, onMounted, onUnmounted } from 'vue'
+import { toggle } from '@/utils/toggle.js'
 
 const data = {
   greeting: 'Hey there!',
@@ -10,15 +10,13 @@ const data = {
   subtitle: "Curieux & Passionés d'IT",
 }
 
-
-
 const greetingRef = ref(null)
 const alternatingTextRef = ref(null)
 const contentRef = ref(null)
 const showCursor = ref(true)
 const showContent = ref(false)
-let cursorInterval = null
 
+let cursorInterval = null
 const typeWriter = (element, text, speed = 100) => {
   let i = 0
   return new Promise(resolve => {
@@ -33,7 +31,6 @@ const typeWriter = (element, text, speed = 100) => {
     }, speed)
   })
 }
-
 const eraseText = (element, speed = 50) => {
   return new Promise(resolve => {
     const timer = setInterval(() => {
@@ -46,13 +43,11 @@ const eraseText = (element, speed = 50) => {
     }, speed)
   })
 }
-
 const blinkCursor = () => {
   cursorInterval = setInterval(() => {
     showCursor.value = !showCursor.value
   }, 500)
 }
-
 const alternateText = async () => {
   if (data.secondaryName) {
     while (true) {
@@ -67,7 +62,6 @@ const alternateText = async () => {
     await typeWriter(alternatingTextRef.value, data.name, 100)
   }
 }
-
 onMounted(async () => {
   blinkCursor()
   await typeWriter(greetingRef.value, data.greeting)
@@ -105,7 +99,7 @@ onUnmounted(() => {
             class="text-yellow-500 dark:text-yellow-400"
           ></span>
         </h2>
-        <p class="text-xl md:text-2xl">{{ data.title }}</p>
+        <p class="text-xl md:text-2xl" :style="{ color: `var(--text-color)` }">{{ data.title }}</p>
         <p class="text-lg text-gray-600 dark:text-gray-400">
           {{ data.subtitle }}
         </p>
