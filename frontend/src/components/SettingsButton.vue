@@ -1,15 +1,18 @@
 <script setup>
-import { onMounted, onUnmounted} from 'vue'
-import { Palette, Moon, Sun } from 'lucide-vue-next'
+import { onMounted, onUnmounted } from 'vue'
+import { Palette, Moon, Sun, Flag } from 'lucide-vue-next'
 import ThemeSwitcher from './ThemeSwitcher.vue'
 import ButtonColorPicker from './ButtonColorPicker.vue'
 import TextColorPicker from './TextColorPicker.vue'
 import TitleColorPicker from './TitleColorPicker.vue'
+import LanguageSwitcher from './LanguageSwitcher.vue'
 import ResetTextColorButton from './ResetTextColorButton.vue'
 import ScrollBarToggle from './ScrollBarToggle.vue'
-import { isOpen, toggle } from '@/utils/toggle.js' // Importez la fonction toggle
+import { useLanguage } from '@/utils/LanguageManager.js'
+import { isOpen, toggle } from '@/utils/toggle.js'
 import { useTheme, Theme } from '@/utils/themeManager.js'
 
+const { switchLanguage } = useLanguage()
 const { theme, setTheme } = useTheme()
 
 const toggleTheme = () => {
@@ -39,13 +42,19 @@ onUnmounted(() => {
   <div class="relative">
     <button
       class="theme-customizer-button fixed bottom-4 right-4 z-50 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-      @click.stop="toggle" 
+      @click.stop="toggle"
       aria-haspopup="true"
       :aria-expanded="isOpen"
     >
       <Palette class="w-6 h-6" />
     </button>
-    
+    <button
+      class="theme-customizer-button fixed top-4 left-4 z-50 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+      @click="switchLanguage"
+      aria-haspopup="true"
+    >
+      <Flag class="w-6 h-6" />
+    </button>
     <Teleport to="body">
       <Transition
         enter-active-class="transition duration-200 ease-out"
@@ -76,16 +85,13 @@ onUnmounted(() => {
               <TitleColorPicker />
             </div>
             <div>
+              <LanguageSwitcher />
+            </div>
+            <div>
               <ResetTextColorButton />
             </div>
             <div>
               <ScrollBarToggle />
-            </div>
-            <div>
-              <TitleColorPicker />
-            </div>
-            <div>
-              <TitleColorPickeSettingsButton />
             </div>
           </div>
           <div
