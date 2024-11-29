@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class', // ou 'media' selon votre préférence
+  darkMode: 'class', 
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
         primary: {
-          DEFAULT: 'var(--primary-500)', // Single primary color
+          DEFAULT: 'var(--primary-500)',
           50: 'var(--primary-50)',
           100: 'var(--primary-100)',
           200: 'var(--primary-200)',

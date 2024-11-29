@@ -23,7 +23,7 @@ export const validColors = [
   'gray',
   'zinc',
   'neutral',
-  'white', // Remplacé ici
+  'white',
 ]
 
 const DEFAULT_COLOR = 'white'

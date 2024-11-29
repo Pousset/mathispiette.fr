@@ -70,7 +70,7 @@ onUnmounted(() => {
               <TextColorPicker />
             </div>
             <div>
-              <TitleColorPicker /> <!-- Ajouté ici -->
+              <TitleColorPicker />
             </div>
             <div>
               <ResetTextColorButton />

@@ -14,7 +14,6 @@ export function useLanguage() {
     currentLanguage.value =
       currentLanguage.value === LANGUAGES.FR ? LANGUAGES.EN : LANGUAGES.FR
     localStorage.setItem('language', currentLanguage.value)
-    // Vous pouvez ajouter ici la logique pour changer la langue de l'application
   }
 
   return {

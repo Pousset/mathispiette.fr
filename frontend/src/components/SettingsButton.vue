@@ -1,6 +1,6 @@
 <script setup>
-import { onMounted, onUnmounted, ref, computed } from 'vue'
-import { Palette, Moon, Sun, Flag } from 'lucide-vue-next'
+import { onMounted, onUnmounted, computed } from 'vue'
+import { Palette } from 'lucide-vue-next'
 import ThemeSwitcher from './ThemeSwitcher.vue'
 import ButtonColorPicker from './ButtonColorPicker.vue'
 import TextColorPicker from './TextColorPicker.vue'
@@ -10,16 +10,12 @@ import ResetTextColorButton from './ResetTextColorButton.vue'
 import ScrollBarToggle from './ScrollBarToggle.vue'
 import { useLanguage } from '@/utils/LanguageManager.js'
 import { isOpen, toggle } from '@/utils/toggle.js'
-import { useTheme, Theme } from '@/utils/themeManager.js'
 import FranceFlag from '@/assets/france-flag.svg'
 import UKFlag from '@/assets/uk-flag.svg'
 
 const { currentLanguage, switchLanguage } = useLanguage()
-const { theme, setTheme } = useTheme()
 
-const toggleTheme = () => {
-  setTheme(theme.value === Theme.DARK ? Theme.LIGHT : Theme.DARK)
-}
+
 
 const closePopover = event => {
   if (
@@ -35,9 +31,7 @@ const flagIcon = computed(() => {
   return currentLanguage.value === 'Français' ? FranceFlag : UKFlag
 })
 
-const getButtonClass = () => ({
-  'ring-2 ring-offset-2 ring-white dark:ring-gray-900': true,
-})
+
 
 onMounted(() => {
   document.addEventListener('click', closePopover)

@@ -188,6 +188,7 @@ onMounted(() => {
     class="relative h-screen overflow-hidden bg-slate-100 dark:bg-gray-900 transition-colors duration-700"
   >
     <StarryBackground class="absolute inset-0" />
+    
     <!-- Main scroll container with dynamic scrollbar classes -->
     <div
       ref="scrollContainer"
