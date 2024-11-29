@@ -152,7 +152,7 @@ watch(
             class="absolute right-full mr-4 top-1/2 transform -translate-y-1/2 whitespace-nowrap"
           >
             <span
-              class="px-2 py-1 text-sm font-medium bg-primary rounded-md shadow-md text-white dark:bg-gray-800 dark:text-gray-200"
+              class="px-200 py-1 text-sm font-medium bg-primary rounded-md shadow-md text-white dark:bg-gray-800 dark:text-gray-200"
             >
               {{ section.name }}
             </span>
