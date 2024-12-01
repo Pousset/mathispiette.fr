@@ -1,18 +1,12 @@
 <script setup>
+import { onMounted, onUnmounted } from 'vue'
 import { Palette } from 'lucide-vue-next'
-import { ref, onMounted, onUnmounted } from 'vue'
 import ThemeSwitcher from './ThemeSwitcher.vue'
-import ButtonColorPicker from './ButtonColorPicker.vue'
-import TextColorPicker from './TextColorPicker.vue'
-import TitleColorPicker from './TitleColorPicker.vue'
-import ResetTextColorButton from './ResetTextColorButton.vue'
+import ButtonColorPicker from './colorChange/ColorPicker.vue'
+import LanguageSwitcher from './LanguageSwitcher.vue'
+import ResetTextColorButton from './colorChange/ResetTextColorButton.vue'
 import ScrollBarToggle from './ScrollBarToggle.vue'
-
-const isOpen = ref(false)
-
-const toggle = () => {
-  isOpen.value = !isOpen.value
-}
+import { isOpen, toggle } from '../../utils/toggle.js'
 
 const closePopover = event => {
   if (
@@ -37,12 +31,19 @@ onUnmounted(() => {
   <div class="relative">
     <button
       class="theme-customizer-button fixed bottom-4 right-4 z-50 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-      @click="toggle"
+      @click.stop="toggle"
       aria-haspopup="true"
       :aria-expanded="isOpen"
     >
-      <Palette class="w-6 h-6" />
+      <Palette class="w-9 h-9" />
     </button>
+    <!-- <button
+      class="theme-customizer-button fixed top-4 left-4 z-50 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+      @click="switchLanguage"
+      aria-haspopup="true"
+    >
+      <img :src="flagIcon" alt="Language Flag" class="w-6 h-6" />
+    </button> -->
     <Teleport to="body">
       <Transition
         enter-active-class="transition duration-200 ease-out"
@@ -67,10 +68,7 @@ onUnmounted(() => {
               <ButtonColorPicker />
             </div>
             <div>
-              <TextColorPicker />
-            </div>
-            <div>
-              <TitleColorPicker />
+              <LanguageSwitcher />
             </div>
             <div>
               <ResetTextColorButton />
@@ -82,7 +80,7 @@ onUnmounted(() => {
           <div
             class="px-4 py-3 bg-gray-50 dark:bg-gray-700/50 text-xs text-gray-500 dark:text-gray-400"
           >
-            Customize your experience
+            Customize your experienceccccc
           </div>
         </div>
       </Transition>
