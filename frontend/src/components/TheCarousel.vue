@@ -149,11 +149,45 @@ const updateResponsiveOptions = () => {
   }
 }
 
+// Mouse and touch events for carousel navigation
+let startX = 0
+let endX = 0
+
+const handleMouseDown = event => {
+  startX = event.clientX
+}
+
+const handleMouseUp = event => {
+  endX = event.clientX
+  handleSwipe()
+}
+
+const handleTouchStart = event => {
+  startX = event.touches[0].clientX
+}
+
+const handleTouchEnd = event => {
+  endX = event.changedTouches[0].clientX
+  handleSwipe()
+}
+
+const handleSwipe = () => {
+  if (startX > endX + 50) {
+    nextSlide()
+  } else if (startX < endX - 50) {
+    prevSlide()
+  }
+}
+
 // Lifecycle
 onMounted(() => {
   updateResponsiveOptions()
   window.addEventListener('resize', handleResize)
   window.addEventListener('keydown', handleKeydown)
+  window.addEventListener('mousedown', handleMouseDown)
+  window.addEventListener('mouseup', handleMouseUp)
+  window.addEventListener('touchstart', handleTouchStart)
+  window.addEventListener('touchend', handleTouchEnd)
   startAutoplay()
 })
 
@@ -161,6 +195,10 @@ onUnmounted(() => {
   stopAutoplay()
   window.removeEventListener('resize', handleResize)
   window.removeEventListener('keydown', handleKeydown)
+  window.removeEventListener('mousedown', handleMouseDown)
+  window.removeEventListener('mouseup', handleMouseUp)
+  window.removeEventListener('touchstart', handleTouchStart)
+  window.removeEventListener('touchend', handleTouchEnd)
   clearTimeout(resizeTimeout)
 })
 
