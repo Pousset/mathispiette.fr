@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, onUnmounted, computed } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import { Palette } from 'lucide-vue-next'
 import ThemeSwitcher from './ThemeSwitcher.vue'
 import ButtonColorPicker from './ButtonColorPicker.vue'
@@ -8,12 +8,7 @@ import TitleColorPicker from './TitleColorPicker.vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 import ResetTextColorButton from './ResetTextColorButton.vue'
 import ScrollBarToggle from './ScrollBarToggle.vue'
-import { useLanguage } from '@/utils/LanguageManager.js'
 import { isOpen, toggle } from '@/utils/toggle.js'
-import FranceFlag from '@/assets/france-flag.svg'
-import UKFlag from '@/assets/uk-flag.svg'
-
-const { currentLanguage, switchLanguage } = useLanguage()
 
 const closePopover = event => {
   if (
@@ -24,10 +19,6 @@ const closePopover = event => {
     isOpen.value = false
   }
 }
-
-const flagIcon = computed(() => {
-  return currentLanguage.value === 'Français' ? FranceFlag : UKFlag
-})
 
 onMounted(() => {
   document.addEventListener('click', closePopover)
@@ -48,13 +39,13 @@ onUnmounted(() => {
     >
       <Palette class="w-6 h-6" />
     </button>
-    <button
+    <!-- <button
       class="theme-customizer-button fixed top-4 left-4 z-50 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
       @click="switchLanguage"
       aria-haspopup="true"
     >
       <img :src="flagIcon" alt="Language Flag" class="w-6 h-6" />
-    </button>
+    </button> -->
     <Teleport to="body">
       <Transition
         enter-active-class="transition duration-200 ease-out"

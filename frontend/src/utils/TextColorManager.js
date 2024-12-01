@@ -9,21 +9,6 @@ export const validColors = [
   'orange',
   'amber',
   'yellow',
-  'teal',
-  'cyan',
-  'sky',
-  'blue',
-  'indigo',
-  'violet',
-  'purple',
-  'fuchsia',
-  'pink',
-  'rose',
-  'slate',
-  'gray',
-  'zinc',
-  'neutral',
-  'white',
 ]
 
 const DEFAULT_COLOR = 'white'
