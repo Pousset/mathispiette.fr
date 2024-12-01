@@ -37,7 +37,7 @@ onUnmounted(() => {
       aria-haspopup="true"
       :aria-expanded="isOpen"
     >
-      <Palette class="w-6 h-6" />
+      <Palette class="w-9 h-9" />
     </button>
     <!-- <button
       class="theme-customizer-button fixed top-4 left-4 z-50 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"

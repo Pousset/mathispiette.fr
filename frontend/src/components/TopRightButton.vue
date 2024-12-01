@@ -19,7 +19,7 @@ const icon = computed(() => (effectiveTheme.value === Theme.DARK ? Sun : Moon))
       @click="toggleTheme"
       aria-haspopup="true"
     >
-      <component :is="icon" class="w-6 h-6" />
+      <component :is="icon" class="w-9 h-9" />
     </button>
   </div>
 </template>
