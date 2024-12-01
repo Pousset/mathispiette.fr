@@ -6,6 +6,7 @@ import ButtonColorPicker from './colorChange/ColorPicker.vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 import ResetTextColorButton from './colorChange/ResetTextColorButton.vue'
 import ScrollBarToggle from './ScrollBarToggle.vue'
+import SlideButton from '@/components/ui/SlideButton.vue'
 import { isOpen, toggle } from '../../utils/toggle.js'
 
 const closePopover = event => {
@@ -37,13 +38,6 @@ onUnmounted(() => {
     >
       <Palette class="w-9 h-9" />
     </button>
-    <!-- <button
-      class="theme-customizer-button fixed top-4 left-4 z-50 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-      @click="switchLanguage"
-      aria-haspopup="true"
-    >
-      <img :src="flagIcon" alt="Language Flag" class="w-6 h-6" />
-    </button> -->
     <Teleport to="body">
       <Transition
         enter-active-class="transition duration-200 ease-out"
@@ -76,11 +70,9 @@ onUnmounted(() => {
             <div>
               <ScrollBarToggle />
             </div>
-          </div>
-          <div
-            class="px-4 py-3 bg-gray-50 dark:bg-gray-700/50 text-xs text-gray-500 dark:text-gray-400"
-          >
-            Customize your experienceccccc
+            <div>
+              <SlideButton>Next Section</SlideButton>
+            </div>
           </div>
         </div>
       </Transition>
