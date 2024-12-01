@@ -2,13 +2,22 @@ import { ref, computed } from 'vue'
 import colors from 'tailwindcss/colors'
 
 export const validColors = [
-  'emerald',
-  'green',
-  'lime',
   'red',
   'orange',
   'amber',
   'yellow',
+  'lime',
+  'green',
+  'emerald',
+  'teal',
+  'cyan',
+  'sky',
+  'blue',
+  'indigo',
+  'violet',
+  'purple',
+  'fuchsia',
+  'pink',
 ]
 
 const DEFAULT_COLOR = 'white'
