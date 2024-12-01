@@ -1,7 +1,7 @@
 <script setup>
 import { inject } from 'vue'
 
-const showScrollbar = inject('showScrollbar') // Inject the scrollbar state
+const showScrollbar = inject('showScrollbar')
 
 const toggleScrollbar = () => {
   showScrollbar.value = !showScrollbar.value
