@@ -8,7 +8,9 @@ const LANGUAGES = {
 const DEFAULT_LANGUAGE = LANGUAGES.FR
 
 export function useLanguage() {
-  const currentLanguage = ref(localStorage.getItem('language') || DEFAULT_LANGUAGE)
+  const currentLanguage = ref(
+    localStorage.getItem('language') || DEFAULT_LANGUAGE,
+  )
 
   function switchLanguage() {
     currentLanguage.value =

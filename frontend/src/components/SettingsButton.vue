@@ -15,8 +15,6 @@ import UKFlag from '@/assets/uk-flag.svg'
 
 const { currentLanguage, switchLanguage } = useLanguage()
 
-
-
 const closePopover = event => {
   if (
     isOpen.value &&
@@ -30,8 +28,6 @@ const closePopover = event => {
 const flagIcon = computed(() => {
   return currentLanguage.value === 'Français' ? FranceFlag : UKFlag
 })
-
-
 
 onMounted(() => {
   document.addEventListener('click', closePopover)

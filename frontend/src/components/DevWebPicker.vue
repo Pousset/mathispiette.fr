@@ -15,7 +15,9 @@ const getButtonClass = color => ({
     <div class="flex items-center justify-between">
       <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
         DevWeb Color:
-        <span class="font-semibold text-primary capitalize">{{ displayColor }}</span>
+        <span class="font-semibold text-primary capitalize">{{
+          displayColor
+        }}</span>
       </span>
     </div>
     <div class="grid grid-cols-8 gap-2">

@@ -1,5 +1,5 @@
 <script setup>
-import { computed, } from 'vue'
+import { computed } from 'vue'
 import { Moon, Sun } from 'lucide-vue-next'
 import { Theme, useTheme } from '@/utils/themeManager.js'
 
@@ -10,7 +10,6 @@ const toggleTheme = () => {
 }
 
 const icon = computed(() => (effectiveTheme.value === Theme.DARK ? Sun : Moon))
-
 </script>
 
 <template>

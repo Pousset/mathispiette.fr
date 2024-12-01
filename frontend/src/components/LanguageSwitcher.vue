@@ -14,7 +14,9 @@ const getButtonClass = () => ({
     <div class="flex items-center justify-between">
       <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
         Language:
-        <span class="font-semibold text-primary capitalize">{{ currentLanguage }}</span>
+        <span class="font-semibold text-primary capitalize">{{
+          currentLanguage
+        }}</span>
       </span>
     </div>
     <div class="grid grid-cols-1 gap-2">

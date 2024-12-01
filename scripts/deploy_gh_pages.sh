@@ -57,7 +57,7 @@ fi
 # Update dependencies 
 
     echo "📦 Updating dependencies..."
-    npm update
+    npx vitest
 
 
 # Build the project

@@ -99,15 +99,17 @@ onUnmounted(() => {
             class="text-yellow-500 dark:text-yellow-400"
           ></span>
         </h2>
-        <p class="text-xl md:text-2xl" :style="{ color: `var(--text-color)` }">{{ data.title }}</p>
+        <p class="text-xl md:text-2xl" :style="{ color: `var(--text-color)` }">
+          {{ data.title }}
+        </p>
         <p class="text-lg text-gray-600 dark:text-gray-400">
           {{ data.subtitle }}
         </p>
         <button
-          @click.stop="toggle" 
+          @click.stop="toggle"
           class="inline-block px-8 py-3 font-bold text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-gradient-to-bl from-primary-400 to-primary-600 hover:from-primary-500 hover:to-primary-700 dark:from-primary-500 dark:to-primary-700 dark:hover:from-primary-600 dark:hover:to-primary-800"
         >
-        Customize your experience
+          Customize your experience
         </button>
       </div>
     </div>
