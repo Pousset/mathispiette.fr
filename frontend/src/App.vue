@@ -1,9 +1,9 @@
 <script setup>
 import { onMounted } from 'vue'
-import { loadSavedColor } from '@/utils/ButtonColorManager'
-import { initializeTheme } from '@/utils/themeManager'
-import { loadSavedDevWebColor } from '@/utils/DevWebColorManager'
-import TopRightButton from '@/components/TopRightButton.vue'
+import { loadSavedColor } from './utils/ButtonColorManager'
+import { initializeTheme } from './utils/themeManager'
+import { loadSavedDevWebColor } from './utils/DevWebColorManager'
+import ThemeCustomizer from './components/ThemeCustomizer.vue'
 
 onMounted(() => {
   loadSavedColor()
@@ -13,5 +13,5 @@ onMounted(() => {
 </script>
 <template>
   <router-view />
-  <TopRightButton />
+  <ThemeCustomizer />
 </template>

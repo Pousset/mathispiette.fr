@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { Moon, Sun } from 'lucide-vue-next'
-import { Theme, useTheme } from '@/utils/themeManager.js'
+import { Theme, useTheme } from '../utils/themeManager'
 
 const { setTheme, effectiveTheme } = useTheme()
 

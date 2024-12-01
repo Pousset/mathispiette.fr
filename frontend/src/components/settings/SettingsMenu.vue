@@ -2,13 +2,13 @@
 import { onMounted, onUnmounted } from 'vue'
 import { Palette } from 'lucide-vue-next'
 import ThemeSwitcher from './ThemeSwitcher.vue'
-import ButtonColorPicker from './ButtonColorPicker.vue'
-import TextColorPicker from './TextColorPicker.vue'
-import TitleColorPicker from './TitleColorPicker.vue'
+import ButtonColorPicker from './colorChange/ButtonColorPicker.vue'
+import TextColorPicker from './colorChange/TextColorPicker.vue'
+import TitleColorPicker from './colorChange/TitleColorPicker.vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
-import ResetTextColorButton from './ResetTextColorButton.vue'
+import ResetTextColorButton from './colorChange/ResetTextColorButton.vue'
 import ScrollBarToggle from './ScrollBarToggle.vue'
-import { isOpen, toggle } from '@/utils/toggle.js'
+import { isOpen, toggle } from '../../utils/toggle.js'
 
 const closePopover = event => {
   if (
@@ -88,7 +88,7 @@ onUnmounted(() => {
           <div
             class="px-4 py-3 bg-gray-50 dark:bg-gray-700/50 text-xs text-gray-500 dark:text-gray-400"
           >
-            Customize your experience
+            Customize your experienceccccc
           </div>
         </div>
       </Transition>

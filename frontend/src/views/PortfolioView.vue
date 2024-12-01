@@ -4,9 +4,9 @@ import { useRouter } from 'vue-router'
 import { debounce } from 'lodash'
 
 // Components
-import NavigationDots from '@/components/NavigationDots.vue'
-import SettingsButton from '@/components/SettingsButton.vue'
-import StarryBackground from '@/components/StarryBackground.vue'
+import NavigationDots from '../components/ui/NavigationDots.vue'
+import SettingsMenu from '../components/settings/SettingsMenu.vue'
+import StarryBackground from '../components/ui/StarryBackground.vue'
 
 // Add scrollbar visibility state
 const showScrollbar = ref(false)
@@ -219,6 +219,6 @@ onMounted(() => {
       @navigate="navigateToSection"
       class="fixed right-4 top-1/2 -translate-y-1/2 z-20"
     />
-    <SettingsButton class="z-20" />
+    <SettingsMenu class="z-20" />
   </div>
 </template>

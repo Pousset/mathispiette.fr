@@ -1,12 +1,12 @@
 <script setup>
 import { Palette } from 'lucide-vue-next'
 import { ref, onMounted, onUnmounted } from 'vue'
-import ThemeSwitcher from './ThemeSwitcher.vue'
+import ThemeSwitcher from '../ThemeSwitcher.vue'
 import ButtonColorPicker from './ButtonColorPicker.vue'
 import TextColorPicker from './TextColorPicker.vue'
 import TitleColorPicker from './TitleColorPicker.vue'
 import ResetTextColorButton from './ResetTextColorButton.vue'
-import ScrollBarToggle from './ScrollBarToggle.vue'
+import ScrollBarToggle from '../ScrollBarToggle.vue'
 
 const isOpen = ref(false)
 
