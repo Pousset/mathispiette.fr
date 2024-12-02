@@ -35,7 +35,9 @@ function isValidColor(color) {
 
 function applyColor(colorName, prefix) {
   if (!isValidColor(colorName)) {
-    console.warn(`Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`)
+    console.warn(
+      `Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`,
+    )
     colorName = DEFAULT_COLOR
   }
 
@@ -59,7 +61,9 @@ function loadSavedColor(key, prefix) {
 
 function saveColor(colorName, key, prefix) {
   if (!isValidColor(colorName)) {
-    console.warn(`Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`)
+    console.warn(
+      `Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`,
+    )
     colorName = DEFAULT_COLOR
   }
 
@@ -72,7 +76,9 @@ export function useColorManager(key, prefix) {
 
   function setColor(colorName) {
     if (!isValidColor(colorName)) {
-      console.warn(`Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`)
+      console.warn(
+        `Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`,
+      )
       colorName = DEFAULT_COLOR
     }
 
@@ -81,7 +87,9 @@ export function useColorManager(key, prefix) {
   }
 
   const displayColor = computed(() => {
-    return selectedColor.value.charAt(0).toUpperCase() + selectedColor.value.slice(1)
+    return (
+      selectedColor.value.charAt(0).toUpperCase() + selectedColor.value.slice(1)
+    )
   })
 
   return {

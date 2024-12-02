@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import Carousel from '../TheCarousel.vue'
+import Carousel from '../ui/TheCarousel.vue'
 
 const data = [
   {

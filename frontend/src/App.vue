@@ -3,7 +3,7 @@ import { onMounted } from 'vue'
 import { loadSavedColor } from './utils/ButtonColorManager'
 import { initializeTheme } from './utils/themeManager'
 import { loadSavedDevWebColor } from './utils/DevWebColorManager'
-import ThemeCustomizer from './components/ThemeCustomizer.vue'
+import ThemeCustomizer from './components/ui/ThemeCustomizer.vue'
 
 onMounted(() => {
   loadSavedColor()
