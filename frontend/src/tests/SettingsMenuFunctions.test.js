@@ -34,14 +34,14 @@ describe('SettingsMenu.vue', () => {
 
     const button = wrapper.find('button.theme-customizer-button')
 
-    // Vérifie que le menu est fermé au départ
+    // Vérifie menu fermé au départ
     expect(isOpen.value).toBe(false)
 
-    // Clique sur le bouton pour ouvrir le menu
+    // Click sur le bouton pour ouvrir le menu
     await button.trigger('click')
     expect(isOpen.value).toBe(true)
 
-    // Clique à nouveau sur le bouton pour fermer le menu
+    // Clicke a nouveau sur le bouton pour fermer le menu
     await button.trigger('click')
     expect(isOpen.value).toBe(false)
   })
