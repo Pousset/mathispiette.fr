@@ -6,7 +6,7 @@ import ButtonColorPicker from './colorChange/ColorPicker.vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 import ResetTextColorButton from './colorChange/ResetTextColorButton.vue'
 import ScrollBarToggle from './ScrollBarToggle.vue'
-import SlideButton from '@/components/ui/SlideButton.vue'
+// import SlideButton from '@/components/ui/SlideButton.vue'
 import { isOpen, toggle } from '../../utils/toggle.js'
 
 const closePopover = event => {
@@ -70,9 +70,9 @@ onUnmounted(() => {
             <div>
               <ScrollBarToggle />
             </div>
-            <div>
+            <!-- <div>
               <SlideButton>Next Section</SlideButton>
-            </div>
+            </div> -->
           </div>
         </div>
       </Transition>

@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 const scrollToNextSection = () => {
   const windowHeight = window.innerHeight
   const currentScroll = window.scrollY
@@ -14,8 +14,5 @@ const scrollToNextSection = () => {
   >
     <slot>Next</slot>
   </button>
-</template>
+</template> -->
 
-<style scoped>
-/* Ajoutez des styles supplémentaires si nécessaire */
-</style>
