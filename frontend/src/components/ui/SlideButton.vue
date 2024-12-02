@@ -15,4 +15,3 @@ const scrollToNextSection = () => {
     <slot>Next</slot>
   </button>
 </template> -->
-

@@ -1,0 +1,74 @@
+# Portfolio en Vue.js 🎨🚀
+
+Bienvenue dans le dépôt de mon portfolio personnel ! Ce projet a été développé avec Vue.js 3 et utilise des outils modernes pour créer une interface élégante, rapide et responsive. ✨
+
+## 🖥️ Aperçu
+
+Un portfolio en ligne pour mettre en avant vos compétences, projets, et expériences professionnelles, avec une interface utilisateur soignée. Ce projet peut être facilement personnalisé pour vos propres besoins.
+
+## Démo en ligne
+
+👉 [Lien vers la démo](https://github.com/Pousset)
+
+## 🛠️ Fonctionnalités
+
+- **Responsive Design** : Adapté aux écrans de toutes tailles (mobile, tablette, bureau).
+- **Section Projets** : Présente vos meilleurs travaux avec des descriptions et des liens.
+- **Section Contact** : Intégration d’un formulaire fonctionnel pour recevoir des messages.
+- **Transitions animées** : Une UX agréable grâce aux animations Vue.
+- **Facile à personnaliser** : Le code est organisé pour permettre des modifications rapides.
+
+## 🚀 Technologies utilisées
+
+- **Vue.js 3** : Framework JavaScript pour construire l interface.
+- **Vite** : Outil de bundling rapide pour le développement.
+- **Tailwind CSS** : Framework CSS utilitaire pour un design propre et moderne.
+
+## 📁 Structure du projet
+
+
+
+
+🛠️ Installation et lancement
+
+Installez les dépendances :
+
+npm install
+# ou
+yarn install
+
+Lancez le serveur de développement :
+
+    npm run dev
+    # ou
+    yarn dev
+
+    Ouvrez votre navigateur à l adresse suivante : 'http://localhost:5173'.
+
+🛡️ Déploiement
+
+Pour déployer ce projet sur une plateforme comme Netlify ou Vercel, suivez ces étapes :
+
+    Générez les fichiers de build :
+
+    npm run build
+    # ou
+    yarn build
+
+    Téléversez le contenu du dossier dist/ sur votre plateforme de déploiement.
+
+📌 Personnalisation
+
+Pour adapter ce portfolio à vos besoins :
+
+    Modifiez les données dans les fichiers du dossier src/views/ (par exemple, Projects.vue pour ajouter vos projets).
+    Mettez à jour les styles dans src/assets/ si nécessaire.
+    Remplacez les images et icônes dans le dossier public/.
+
+✨ Contribuer
+
+Les contributions sont les bienvenues ! Si vous avez des suggestions ou remarquez un problème, ouvrez une issue ou soumettez une pull request.
+
+📄 Licence
+
+Ce projet est sous licence MIT. Vous pouvez l utiliser librement, mais un lien de crédit est toujours apprécié. ❤️
