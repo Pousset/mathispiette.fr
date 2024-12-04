@@ -5,7 +5,7 @@ import { debounce } from 'lodash'
 
 // Components
 import NavigationDots from '../components/ui/NavigationDots.vue'
-import SettingsMenu from '../components/settings/SettingsMenu.vue'
+import SettingsMenu from '../components/base/SettingsMenu.vue'
 import StarryBackground from '../components/ui/StarryBackground.vue'
 
 // Add scrollbar visibility state
