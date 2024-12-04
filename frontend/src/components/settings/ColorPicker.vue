@@ -4,7 +4,7 @@ import colors from 'tailwindcss/colors'
 import {
   validColors as textValidColors,
   useTextColor,
-} from '@/utils/TextColorManager.js'
+} from '@/utils/ButtonColorManager.js'
 import {
   validColors as buttonValidColors,
   useButtonColor,

@@ -1,11 +1,10 @@
 <script setup>
 import { onMounted, onUnmounted } from 'vue'
 import { Palette } from 'lucide-vue-next'
-import ThemeSwitcher from './ThemeSwitcher.vue'
-import ButtonColorPicker from './colorChange/ColorPicker.vue'
-import LanguageSwitcher from './LanguageSwitcher.vue'
-import ResetTextColorButton from './colorChange/ResetTextColorButton.vue'
-import ScrollBarToggle from './ScrollBarToggle.vue'
+import ThemeSwitcher from '../settings/ThemeSwitcher.vue'
+import ButtonColorPicker from '../settings/ColorPicker.vue'
+import ResetTextColorButton from '../settings/ResetTextColorButton.vue'
+import ScrollBarToggle from '../settings/ScrollBarToggle.vue'
 // import SlideButton from '@/components/ui/SlideButton.vue'
 import { isOpen, toggle } from '../../utils/toggle.js'
 
@@ -56,23 +55,19 @@ onUnmounted(() => {
         >
           <div class="p-4 space-y-6" role="none">
             <div>
+              <ScrollBarToggle />
+            </div>
+            <div>
               <ThemeSwitcher />
             </div>
             <div>
               <ButtonColorPicker />
             </div>
-            <div>
-              <LanguageSwitcher />
-            </div>
+           
             <div>
               <ResetTextColorButton />
             </div>
-            <div>
-              <ScrollBarToggle />
-            </div>
-            <!-- <div>
-              <SlideButton>Next Section</SlideButton>
-            </div> -->
+    
           </div>
         </div>
       </Transition>

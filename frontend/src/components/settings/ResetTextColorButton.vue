@@ -1,5 +1,5 @@
 <script setup>
-import { useTextColor } from '@/utils/TextColorManager.js'
+import { useTextColor } from '@/utils/ButtonColorManager.js'
 
 const { resetTextColor } = useTextColor()
 
