@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
-import SettingsMenu from '@/components/settings/SettingsMenu.vue'
+import SettingsMenu from '@/components/base/SettingsMenu.vue'
 import { isOpen } from '@/utils/toggle.js'
 
 describe('SettingsMenu.vue', () => {
