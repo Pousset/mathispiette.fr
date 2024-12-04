@@ -3,7 +3,6 @@ import { onMounted, onUnmounted } from 'vue'
 import { Palette } from 'lucide-vue-next'
 import ThemeSwitcher from '../settings/ThemeSwitcher.vue'
 import ButtonColorPicker from '../settings/ColorPicker.vue'
-import LanguageSwitcher from '../settings/LanguageSwitcher.vue'
 import ResetTextColorButton from '../settings/ResetTextColorButton.vue'
 import ScrollBarToggle from '../settings/ScrollBarToggle.vue'
 // import SlideButton from '@/components/ui/SlideButton.vue'
@@ -56,23 +55,19 @@ onUnmounted(() => {
         >
           <div class="p-4 space-y-6" role="none">
             <div>
+              <ScrollBarToggle />
+            </div>
+            <div>
               <ThemeSwitcher />
             </div>
             <div>
               <ButtonColorPicker />
             </div>
-            <div>
-              <LanguageSwitcher />
-            </div>
+           
             <div>
               <ResetTextColorButton />
             </div>
-            <div>
-              <ScrollBarToggle />
-            </div>
-            <!-- <div>
-              <SlideButton>Next Section</SlideButton>
-            </div> -->
+    
           </div>
         </div>
       </Transition>
