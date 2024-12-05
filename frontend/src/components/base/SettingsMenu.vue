@@ -1,11 +1,12 @@
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { Palette } from 'lucide-vue-next'
 import ThemeSwitcher from '../settings/ThemeSwitcher.vue'
 import ButtonColorPicker from '../settings/ColorPicker.vue'
 import ScrollBarToggle from '../settings/ScrollBarToggle.vue'
 // import SlideButton from '@/components/ui/SlideButton.vue'
 import { isOpen, toggle } from '../../utils/toggle.js'
+import { useTheme } from '@/utils/themeManager.js'
 
 const closePopover = event => {
   if (
@@ -17,8 +18,39 @@ const closePopover = event => {
   }
 }
 
+const savedColor = ref(localStorage.getItem('popoverBgColor') || 'bg-white');
+const buttonColor = ref('bg-blue-500');
+
+const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+const handleButtonClick = () => {
+  console.log('Nouveau Bouton cliqué');
+  const randomColor = getRandomColor();
+  const popover = document.querySelector('.theme-customizer-popover');
+  popover.style.transition = 'background-color 0.5s ease';
+  popover.style.backgroundColor = randomColor;
+  localStorage.setItem('popoverBgColor', randomColor);
+  savedColor.value = randomColor;
+  buttonColor.value = randomColor;
+  console.log(`Couleur de fond actuelle: ${randomColor}`);
+}
+
+const { effectiveTheme } = useTheme()
+
 onMounted(() => {
-  document.addEventListener('click', closePopover)
+  document.addEventListener('click', closePopover);
+  const popover = document.querySelector('.theme-customizer-popover');
+  if (popover) {
+    popover.style.transition = 'background-color 0.5s ease';
+    popover.style.backgroundColor = savedColor.value;
+  }
 })
 
 onUnmounted(() => {
@@ -62,9 +94,14 @@ onUnmounted(() => {
             <div>
               <ButtonColorPicker />
             </div>
-           
-            
-    
+            <div>
+              <button
+                :class="`${buttonColor.value} w-full py-2 px-4 text-white rounded-lg hover:bg-opacity-90 transition-all duration-300`"
+                @click="handleButtonClick"
+              >
+                <span :class="effectiveTheme === 'dark' ? 'text-white' : 'text-black'">Change BG</span>
+              </button>
+            </div>
           </div>
         </div>
       </Transition>
