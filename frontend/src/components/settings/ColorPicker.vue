@@ -1,48 +1,44 @@
 <script setup>
-import { CheckIcon } from 'lucide-vue-next'
-import colors from 'tailwindcss/colors'
+import { CheckIcon } from 'lucide-vue-next';
+import colors from 'tailwindcss/colors';
 import {
   validColors as textValidColors,
   useTextColor,
-} from '@/utils/ButtonColorManager.js'
-import {
   validColors as buttonValidColors,
   useButtonColor,
-} from '@/utils/ButtonColorManager.js'
+} from '@/utils/ButtonColorManager.js';
 
-const { selectedColor: selectedTextColor, setTextColor } = useTextColor()
-const { selectedColor: selectedButtonColor, setButtonColor } = useButtonColor()
+const { 
+  selectedColor: selectedTextColor, 
+  setTextColor, 
+  resetTextColor 
+} = useTextColor();
+
+const { 
+  selectedColor: selectedButtonColor, 
+  setButtonColor, 
+  resetButtonColor 
+} = useButtonColor();
 
 const getButtonClass = (color, selectedColor) => ({
   'ring-2 ring-offset-2 ring-white dark:ring-gray-900': color === selectedColor,
-})
+});
 
-const displayColor = color => {
-  return color.charAt(0).toUpperCase() + color.slice(1)
-}
-const { resetTextColor } = useTextColor()
-
-const handleReset = () => {
-  resetTextColor()
-}
+const displayColor = (color) => {
+  return color.charAt(0).toUpperCase() + color.slice(1);
+};
 </script>
 
 <template>
   <div class="w-full space-y-6">
-    <button
-    @click="handleReset"
-    class="w-full py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all duration-200"
-  >
-    Réinitialiser la couleur du texte
-  </button>
     <!-- Text Color Picker -->
     <div class="w-full space-y-3">
       <div class="flex items-center justify-between">
         <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
           Text Color:
-          <span class="font-semibold text-primary capitalize">{{
-            displayColor(selectedTextColor)
-          }}</span>
+          <span class="font-semibold text-primary capitalize">
+            {{ displayColor(selectedTextColor) }}
+          </span>
         </span>
       </div>
       <div class="grid grid-cols-8 gap-2">
@@ -60,6 +56,12 @@ const handleReset = () => {
           />
         </button>
       </div>
+      <button
+        @click="resetTextColor"
+        class="w-full py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all duration-200"
+      >
+        Réinitialiser texte
+      </button>
     </div>
 
     <!-- Button Color Picker -->
@@ -67,9 +69,9 @@ const handleReset = () => {
       <div class="flex items-center justify-between">
         <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
           Button Color:
-          <span class="font-semibold text-primary capitalize">{{
-            displayColor(selectedButtonColor)
-          }}</span>
+          <span class="font-semibold text-primary capitalize">
+            {{ displayColor(selectedButtonColor) }}
+          </span>
         </span>
       </div>
       <div class="grid grid-cols-8 gap-2">
@@ -87,6 +89,12 @@ const handleReset = () => {
           />
         </button>
       </div>
+      <button
+        @click="resetButtonColor"
+        class="w-full py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all duration-200"
+      >
+        Réinitialiser bouton
+      </button>
     </div>
   </div>
 </template>

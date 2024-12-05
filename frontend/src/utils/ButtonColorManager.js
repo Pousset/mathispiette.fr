@@ -64,6 +64,11 @@ export function saveColor(colorName) {
   applyColor(colorName)
 }
 
+export function resetButtonColor() {
+  localStorage.removeItem('ButtonColor');
+  applyColor(DEFAULT_COLOR);
+}
+
 export function useButtonColor() {
   const selectedColor = ref(loadSavedColor())
 
@@ -85,6 +90,7 @@ export function useButtonColor() {
     selectedColor,
     displayColor,
     setButtonColor,
+    resetButtonColor,
     validColors,
   }
 }
