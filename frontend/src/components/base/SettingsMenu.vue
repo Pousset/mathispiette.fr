@@ -3,7 +3,6 @@ import { onMounted, onUnmounted } from 'vue'
 import { Palette } from 'lucide-vue-next'
 import ThemeSwitcher from '../settings/ThemeSwitcher.vue'
 import ButtonColorPicker from '../settings/ColorPicker.vue'
-import ResetTextColorButton from '../settings/ResetTextColorButton.vue'
 import ScrollBarToggle from '../settings/ScrollBarToggle.vue'
 // import SlideButton from '@/components/ui/SlideButton.vue'
 import { isOpen, toggle } from '../../utils/toggle.js'
@@ -64,9 +63,7 @@ onUnmounted(() => {
               <ButtonColorPicker />
             </div>
            
-            <div>
-              <ResetTextColorButton />
-            </div>
+            
     
           </div>
         </div>

@@ -20,10 +20,21 @@ const getButtonClass = (color, selectedColor) => ({
 const displayColor = color => {
   return color.charAt(0).toUpperCase() + color.slice(1)
 }
+const { resetTextColor } = useTextColor()
+
+const handleReset = () => {
+  resetTextColor()
+}
 </script>
 
 <template>
   <div class="w-full space-y-6">
+    <button
+    @click="handleReset"
+    class="w-full py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all duration-200"
+  >
+    Réinitialiser la couleur du texte
+  </button>
     <!-- Text Color Picker -->
     <div class="w-full space-y-3">
       <div class="flex items-center justify-between">
