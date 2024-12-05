@@ -81,7 +81,7 @@ onUnmounted(() => {
   >
     <div class="text-center z-10 space-y-6">
       <h1 class="text-4xl md:text-5xl font-bold relative">
-        <span ref="greetingRef" class="inline-block"></span>
+        <span ref="greetingRef" class="inline-block greeting"></span>
         <span
           class="inline-block w-0.5 h-8 bg-gray-800 dark:bg-white animate-blink ml-1"
           :class="{ 'opacity-0': !showCursor }"
@@ -96,13 +96,13 @@ onUnmounted(() => {
           <span class="text-teal-500 dark:text-teal-400">It's me </span>
           <span
             ref="alternatingTextRef"
-            class="text-yellow-500 dark:text-yellow-400"
+            class="text-yellow-500 dark:text-yellow-400 name"
           ></span>
         </h2>
-        <p class="text-xl md:text-2xl" :style="{ color: `var(--text-color)` }">
+        <p class="text-xl md:text-2xl title">
           {{ data.title }}
         </p>
-        <p class="text-lg text-gray-600 dark:text-gray-400">
+        <p class="text-lg text-gray-600 dark:text-gray-400 subtitle">
           {{ data.subtitle }}
         </p>
         <button

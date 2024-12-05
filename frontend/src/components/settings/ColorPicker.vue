@@ -1,24 +1,66 @@
 <script setup>
 import { CheckIcon } from 'lucide-vue-next';
 import colors from 'tailwindcss/colors';
-import {
-  validColors as textValidColors,
-  useTextColor,
-  validColors as buttonValidColors,
-  useButtonColor,
-} from '@/utils/ButtonColorManager.js';
+import { ref} from 'vue';
 
-const { 
-  selectedColor: selectedTextColor, 
-  setTextColor, 
-  resetTextColor 
-} = useTextColor();
+const validColors = [
+  'red',
+  'orange',
+  'amber',
+  'yellow',
+  'lime',
+  'green',
+  'emerald',
+  'teal',
+  'cyan',
+  'sky',
+  'blue',
+  'indigo',
+  'violet',
+  'purple',
+  'fuchsia',
+  'pink',
+];
 
-const { 
-  selectedColor: selectedButtonColor, 
-  setButtonColor, 
-  resetButtonColor 
-} = useButtonColor();
+const DEFAULT_COLOR = 'yellow';
+
+const selectedGreetingColor = ref(localStorage.getItem('greetingColor') || DEFAULT_COLOR);
+const selectedNameColor = ref(localStorage.getItem('nameColor') || DEFAULT_COLOR);
+const selectedTitleColor = ref(localStorage.getItem('titleColor') || DEFAULT_COLOR);
+const selectedSubtitleColor = ref(localStorage.getItem('subtitleColor') || DEFAULT_COLOR);
+
+const applyColor = (element, colorName) => {
+  if (!validColors.includes(colorName)) {
+    console.warn(`Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`);
+    colorName = DEFAULT_COLOR;
+  }
+  localStorage.setItem(`${element}Color`, colorName);
+  document.documentElement.style.setProperty(`--${element}-color`, colors[colorName][500]);
+  document.querySelectorAll(`.${element}`).forEach(el => {
+    el.style.setProperty('color', colors[colorName][500], 'important');
+  });
+  console.log(`Applied ${colorName} to ${element}`);
+};
+
+const setGreetingColor = (colorName) => {
+  selectedGreetingColor.value = colorName;
+  applyColor('greeting', colorName);
+};
+
+const setNameColor = (colorName) => {
+  selectedNameColor.value = colorName;
+  applyColor('name', colorName);
+};
+
+const setTitleColor = (colorName) => {
+  selectedTitleColor.value = colorName;
+  applyColor('title', colorName);
+};
+
+const setSubtitleColor = (colorName) => {
+  selectedSubtitleColor.value = colorName;
+  applyColor('subtitle', colorName);
+};
 
 const getButtonClass = (color, selectedColor) => ({
   'ring-2 ring-offset-2 ring-white dark:ring-gray-900': color === selectedColor,
@@ -31,70 +73,112 @@ const displayColor = (color) => {
 
 <template>
   <div class="w-full space-y-6">
-    <!-- Text Color Picker -->
+    <!-- Greeting Color Picker -->
     <div class="w-full space-y-3">
       <div class="flex items-center justify-between">
         <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
-          Text Color:
+          Greeting Color:
           <span class="font-semibold text-primary capitalize">
-            {{ displayColor(selectedTextColor) }}
+            {{ displayColor(selectedGreetingColor) }}
           </span>
         </span>
       </div>
       <div class="grid grid-cols-8 gap-2">
         <button
-          v-for="color in textValidColors"
+          v-for="color in validColors"
           :key="color"
           class="w-6 h-6 rounded-full transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-gray-900"
-          :class="getButtonClass(color, selectedTextColor)"
+          :class="getButtonClass(color, selectedGreetingColor)"
           :style="{ backgroundColor: colors[color][500] }"
-          @click="() => setTextColor(color)"
+          @click="() => setGreetingColor(color)"
         >
           <CheckIcon
-            v-if="color === selectedTextColor"
+            v-if="color === selectedGreetingColor"
             class="w-3 h-3 text-white mx-auto"
           />
         </button>
       </div>
-      <button
-        @click="resetTextColor"
-        class="w-full py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all duration-200"
-      >
-        Réinitialiser texte
-      </button>
     </div>
 
-    <!-- Button Color Picker -->
+    <!-- Name Color Picker -->
     <div class="w-full space-y-3">
       <div class="flex items-center justify-between">
         <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
-          Button Color:
+          Name Color:
           <span class="font-semibold text-primary capitalize">
-            {{ displayColor(selectedButtonColor) }}
+            {{ displayColor(selectedNameColor) }}
           </span>
         </span>
       </div>
       <div class="grid grid-cols-8 gap-2">
         <button
-          v-for="color in buttonValidColors"
+          v-for="color in validColors"
           :key="color"
           class="w-6 h-6 rounded-full transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-gray-900"
-          :class="getButtonClass(color, selectedButtonColor)"
+          :class="getButtonClass(color, selectedNameColor)"
           :style="{ backgroundColor: colors[color][500] }"
-          @click="() => setButtonColor(color)"
+          @click="() => setNameColor(color)"
         >
           <CheckIcon
-            v-if="color === selectedButtonColor"
+            v-if="color === selectedNameColor"
             class="w-3 h-3 text-white mx-auto"
           />
         </button>
       </div>
-      <button
-        @click="resetButtonColor"
-        class="w-full py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all duration-200"
-      >
-        Réinitialiser bouton
-      </button>
+    </div>
+
+    <!-- Title Color Picker -->
+    <div class="w-full space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
+          Title Color:
+          <span class="font-semibold text-primary capitalize">
+            {{ displayColor(selectedTitleColor) }}
+          </span>
+        </span>
+      </div>
+      <div class="grid grid-cols-8 gap-2">
+        <button
+          v-for="color in validColors"
+          :key="color"
+          class="w-6 h-6 rounded-full transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-gray-900"
+          :class="getButtonClass(color, selectedTitleColor)"
+          :style="{ backgroundColor: colors[color][500] }"
+          @click="() => setTitleColor(color)"
+        >
+          <CheckIcon
+            v-if="color === selectedTitleColor"
+            class="w-3 h-3 text-white mx-auto"
+          />
+        </button>
+      </div>
+    </div>
+
+    <!-- Subtitle Color Picker -->
+    <div class="w-full space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
+          Subtitle Color:
+          <span class="font-semibold text-primary capitalize">
+            {{ displayColor(selectedSubtitleColor) }}
+          </span>
+        </span>
+      </div>
+      <div class="grid grid-cols-8 gap-2">
+        <button
+          v-for="color in validColors"
+          :key="color"
+          class="w-6 h-6 rounded-full transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-gray-900"
+          :class="getButtonClass(color, selectedSubtitleColor)"
+          :style="{ backgroundColor: colors[color][500] }"
+          @click="() => setSubtitleColor(color)"
+        >
+          <CheckIcon
+            v-if="color === selectedSubtitleColor"
+            class="w-3 h-3 text-white mx-auto"
+          />
+        </button>
+      </div>
     </div>
   </div>
 </template>
