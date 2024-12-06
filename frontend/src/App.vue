@@ -7,7 +7,6 @@ import ThemeCustomizer from './components/ui/ThemeCustomizer.vue'
 onMounted(() => {
   loadSavedColor()
   initializeTheme()
-
 })
 </script>
 <template>
