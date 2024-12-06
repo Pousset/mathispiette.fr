@@ -67,6 +67,18 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener('click', closePopover)
 })
+
+// Fonction pour appliquer une couleur aléatoire à tous les éléments
+const applyRandomColorToAll = () => {
+  const colorPickerComponent = document.querySelector('button-color-picker')
+  if (colorPickerComponent) {
+    colorPickerComponent.__vueParentComponent.ctx.applyRandomColorToAll()
+    // Forcer le rafraîchissement des styles
+    document.documentElement.style.display = 'none'
+    document.documentElement.offsetHeight // Force reflow
+    document.documentElement.style.display = ''
+  }
+}
 </script>
 
 <template>
@@ -77,27 +89,35 @@ onUnmounted(() => {
       @click.stop="toggle"
       aria-haspopup="true"
       :aria-expanded="isOpen"
-    >
+      >
       <Palette class="w-9 h-9" />
     </button>
     <Teleport to="body">
       <Transition
-        enter-active-class="transition duration-200 ease-out"
-        enter-from-class="transform scale-95 opacity-0"
-        enter-to-class="transform scale-100 opacity-100"
-        leave-active-class="transition duration-150 ease-in"
-        leave-from-class="transform scale-100 opacity-100"
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="transform scale-95 opacity-0"
+      enter-to-class="transform scale-100 opacity-100"
+      leave-active-class="transition duration-150 ease-in"
+      leave-from-class="transform scale-100 opacity-100"
         leave-to-class="transform scale-95 opacity-0"
       >
         <!-- Popover de personnalisation -->
         <div
-          v-if="isOpen"
-          class="theme-customizer-popover fixed bottom-20 right-4 w-72 rounded-2xl shadow-xl bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-50 overflow-hidden"
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="theme-menu"
+        v-if="isOpen"
+        class="theme-customizer-popover fixed bottom-20 right-4 w-72 md:w-96 rounded-2xl shadow-xl bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-50 overflow-hidden"
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="theme-menu"
         >
-          <div class="p-4 space-y-6" role="none">
+        <div class="p-4 space-y-6" role="none">
+          <div>
+            <button
+            class="w-full py-2 px-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all duration-300"
+            @click="applyRandomColorToAll"
+            >
+            Apply Random Color to All
+            </button>
+          </div>
             <div>
               <ScrollBarToggle />
             </div>

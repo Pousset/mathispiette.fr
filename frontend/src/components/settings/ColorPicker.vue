@@ -104,10 +104,29 @@ const applyRandomColor = element => {
       console.warn(`Element inconnu : ${element}`)
   }
 }
+
+// Fonction pour appliquer une couleur aléatoire à tous les éléments
+const applyRandomColorToAll = () => {
+  setGreetingColor(getRandomColor())
+  setNameColor(getRandomColor())
+  setTitleColor(getRandomColor())
+  setSubtitleColor(getRandomColor())
+  setButtonColor(getRandomColor())
+}
 </script>
 
 <template>
   <div class="w-full space-y-6">
+    <!-- Bouton pour appliquer une couleur aléatoire à tous les éléments -->
+    <div class="w-full flex justify-end">
+      <button
+        @click="applyRandomColorToAll"
+        class="text-xs text-blue-500"
+      >
+        Apply Random Color to All
+      </button>
+    </div>
+
     <!-- Sélecteur de couleur pour greeting -->
     <div class="w-full space-y-3">
       <div class="flex items-center justify-between">
