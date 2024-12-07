@@ -22,12 +22,17 @@ const selectedElement = ref('greeting')
 // Fonction pour appliquer une couleur à un élément
 const applyColor = (element, colorName) => {
   if (!validColors.includes(colorName)) {
-    console.warn(`Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`)
+    console.warn(
+      `Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`,
+    )
     colorName = DEFAULT_COLOR
   }
   selectedColors.value[element] = colorName
   localStorage.setItem(`${element}Color`, colorName)
-  document.documentElement.style.setProperty(`--${element}-color`, colors[colorName][500])
+  document.documentElement.style.setProperty(
+    `--${element}-color`,
+    colors[colorName][500],
+  )
   document.querySelectorAll(`.${element}`).forEach(el => {
     el.style.setProperty('color', colors[colorName][500], 'important')
   })
@@ -39,11 +44,12 @@ const applyRandomColor = () => {
   const randomColor = validColors[randomIndex]
   applyColor(selectedElement.value, randomColor)
 }
-
-// Fonction pour réinitialiser toutes les couleurs à la couleur par défaut
-const resetAllColors = () => {
+// Fonction pour appliquer des couleurs aléatoires à tous les éléments
+const applyRandomColorsToAll = () => {
   Object.keys(selectedColors.value).forEach(element => {
-    applyColor(element, DEFAULT_COLOR)
+    const randomIndex = Math.floor(Math.random() * validColors.length)
+    const randomColor = validColors[randomIndex]
+    applyColor(element, randomColor)
   })
 }
 
@@ -53,9 +59,7 @@ const getButtonClass = (color, selectedColor) => ({
 })
 
 // Fonction pour afficher le nom de la couleur avec une majuscule initiale
-const displayColor = (color) =>
-  color.charAt(0).toUpperCase() + color.slice(1)
-
+const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
 </script>
 
 <template>
@@ -63,8 +67,10 @@ const displayColor = (color) =>
     <!-- Sélection de l'élément à modifier -->
     <div class="w-full flex flex-col items-center space-y-3">
       <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
-        Selected Element: 
-        <span class="font-semibold text-primary capitalize">{{ selectedElement }}</span>
+        Selected Element:
+        <span class="font-semibold text-primary capitalize">{{
+          selectedElement
+        }}</span>
       </span>
       <div class="grid grid-cols-5 gap-2">
         <button
@@ -84,17 +90,14 @@ const displayColor = (color) =>
 
     <!-- Panneau de sélection des couleurs -->
     <div class="w-full space-y-3">
-      <div class="flex items-center ">
+      <div class="flex items-center">
         <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
-          Current Color for {{ selectedElement }}: 
+          Current Color for {{ selectedElement }}:
           <span class="font-semibold text-primary capitalize">
             {{ displayColor(selectedColors[selectedElement]) }}
           </span>
         </span>
-        <button
-          @click="applyRandomColor"
-          class="text-xs text-blue-500"
-        >
+        <button @click="applyRandomColor" class="text-xs text-blue-500">
           Apply Random Color
         </button>
       </div>
@@ -115,13 +118,15 @@ const displayColor = (color) =>
       </div>
     </div>
 
-    <!-- Bouton pour réinitialiser toutes les couleurs -->
-    <div class="w-full flex justify-end">
+    <!-- Bouton pour appliquer des couleurs aléatoires à tous les éléments -->
+    <div
+      class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
+    >
       <button
-        @click="resetAllColors"
-        class="text-xs text-red-500"
+        @click="applyRandomColorsToAll"
+        class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
       >
-        Reset All Colors
+        Apply Random Colors to All
       </button>
     </div>
   </div>
