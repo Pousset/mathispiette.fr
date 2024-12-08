@@ -73,22 +73,22 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
 <template>
   <div class="w-full space-y-6">
     <!-- Sélection de l'élément à modifier -->
-    <div class="w-full flex flex-col items-center space-y-3">
+    <div class="w-full flex flex-col space-y-3">
       <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
-        Selected Element:
+        Elément sélectionner:
         <span class="font-semibold text-primary capitalize">{{
           selectedElement
         }}</span>
       </span>
-      <div class="grid grid-cols-5 gap-2">
+      <div class="flex gap-2">
         <button
           v-for="(color, element) in selectedColors"
           :key="element"
           @click="selectedElement = element"
-          class="px-4 py-2 text-xs rounded border focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500"
+          class="flex-1 px-4 py-2 text-xs rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
           :class="{
-            'bg-blue-100 text-blue-600': selectedElement === element,
-            'bg-gray-100 text-gray-600': selectedElement !== element,
+            'bg-blue-500 text-white': selectedElement === element,
+            'bg-gray-200 text-gray-700': selectedElement !== element,
           }"
         >
           {{ element }}
@@ -105,9 +105,6 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
             {{ displayColor(selectedColors[selectedElement]) }}
           </span>
         </span>
-        <button @click="applyRandomColor" class="text-xs text-blue-500">
-          Apply Random Color
-        </button>
       </div>
       <div class="grid grid-cols-8 gap-2">
         <button
@@ -132,7 +129,7 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
         @click="changeButtonColors"
         class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
       >
-        Change Button Colors
+        Change Button Colors All
       </button>
     </div>
 
