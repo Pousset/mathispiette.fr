@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
-import { loadSavedColor } from './utils/ButtonColorManager'
+import { loadSavedColor } from './utils/ColorManager'
 import { initializeTheme } from './utils/themeManager'
 import ThemeCustomizer from './components/ui/ThemeCustomizer.vue'
 

@@ -1,5 +1,6 @@
 <script setup>
 import { Mail } from 'lucide-vue-next'
+
 const data = {
   email: 'mathispiette@gmail.com',
   socialLinks: [

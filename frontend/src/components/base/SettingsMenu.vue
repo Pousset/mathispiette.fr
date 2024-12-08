@@ -44,7 +44,6 @@ const handleButtonClick = () => {
   buttonColor.value = randomColor
   console.log(`Couleur de fond actuelle: ${randomColor}`)
 }
-
 // Fonction pour recharger la page
 const reloadPage = () => {
   window.location.reload()
@@ -80,57 +79,45 @@ onUnmounted(() => {
     >
       <Palette class="w-9 h-9" />
     </button>
-    <Teleport to="body">
-      <Transition
-        enter-active-class="transition duration-200 ease-out"
-        enter-from-class="transform scale-95 opacity-0"
-        enter-to-class="transform scale-100 opacity-100"
-        leave-active-class="transition duration-150 ease-in"
-        leave-from-class="transform scale-100 opacity-100"
-        leave-to-class="transform scale-95 opacity-0"
-      >
-        <!-- Popover de personnalisation -->
-        <div
-          v-if="isOpen"
-          class="theme-customizer-popover fixed bottom-20 right-4 w-72 rounded-2xl shadow-xl bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-50 overflow-hidden"
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="theme-menu"
-        >
-          <div class="p-4 space-y-6" role="none">
-            <div>
-              <ScrollBarToggle />
-            </div>
-            <div>
-              <ThemeSwitcher />
-            </div>
-            <div>
-              <ButtonColorPicker />
-            </div>
-            <div>
-              <button
-                :class="`${buttonColor.value} w-full py-2 px-4 text-white rounded-lg hover:bg-opacity-90 transition-all duration-300`"
-                @click="handleButtonClick"
-              >
-                <span
-                  :class="
-                    effectiveTheme === 'dark' ? 'text-white' : 'text-black'
-                  "
-                  >Change BG</span
-                >
-              </button>
-            </div>
-            <div>
-              <button
-                class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
-                @click="reloadPage"
-              >
-                Reload Page
-              </button>
-            </div>
-          </div>
+
+    <!-- Popover de personnalisation -->
+    <div
+      v-if="isOpen"
+      class="theme-customizer-popover fixed bottom-20 right-4 w-72 md:w-96 rounded-2xl shadow-xl bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-50 overflow-hidden"
+      role="menu"
+      aria-orientation="vertical"
+      aria-labelledby="theme-menu"
+    >
+      <div class="p-4 space-y-6" role="none">
+        <div>
+          <ScrollBarToggle />
         </div>
-      </Transition>
-    </Teleport>
+        <div>
+          <ThemeSwitcher />
+        </div>
+        <div>
+          <ButtonColorPicker />
+        </div>
+        <div>
+          <button
+            :class="`${buttonColor.value} w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300`"
+            @click="handleButtonClick"
+          >
+            <span
+              :class="effectiveTheme === 'dark' ? 'text-white' : 'text-black'"
+              >Change BG</span
+            >
+          </button>
+        </div>
+        <div>
+          <button
+            class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
+            @click="reloadPage"
+          >
+            Reload Page
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
