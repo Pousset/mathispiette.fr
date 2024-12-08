@@ -37,12 +37,6 @@ const applyColor = (element, colorName) => {
   })
 }
 
-// Fonction pour appliquer une couleur aléatoire
-const applyRandomColor = () => {
-  const randomIndex = Math.floor(Math.random() * validColors.length)
-  const randomColor = validColors[randomIndex]
-  applyColor(selectedElement.value, randomColor)
-}
 // Fonction pour appliquer des couleurs aléatoires à tous les éléments
 const applyRandomColorsToAll = () => {
   Object.keys(selectedColors.value).forEach(element => {
@@ -80,7 +74,7 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
           selectedElement
         }}</span>
       </span>
-      <div class="flex gap-2">
+      <div class="flex flex-wrap gap-2">
         <button
           v-for="(color, element) in selectedColors"
           :key="element"
@@ -129,7 +123,7 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
         @click="changeButtonColors"
         class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
       >
-        Change Button Colors All
+        Change Button Colors
       </button>
     </div>
 

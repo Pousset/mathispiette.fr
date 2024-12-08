@@ -107,7 +107,7 @@ onUnmounted(() => {
         </p>
         <button
           @click.stop="toggle"
-          class="inline-block px-8 py-3 font-bold text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-gradient-to-bl from-primary-400 to-primary-600 hover:from-primary-500 hover:to-primary-700 dark:from-primary-500 dark:to-primary-700 dark:hover:from-primary-600 dark:hover:to-primary-800"
+          class="inline-block px-8 py-3 font-bold text-white rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 hover:from-purple-500 hover:via-pink-600 hover:to-red-600"
         >
           Customize your experience
         </button>
