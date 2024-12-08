@@ -13,7 +13,6 @@ const selectedColors = ref({
   name: localStorage.getItem('nameColor') || DEFAULT_COLOR,
   title: localStorage.getItem('titleColor') || DEFAULT_COLOR,
   subtitle: localStorage.getItem('subtitleColor') || DEFAULT_COLOR,
-  button: localStorage.getItem('buttonColor') || DEFAULT_COLOR,
 })
 
 // État réactif pour l'élément actuellement sélectionné
@@ -50,6 +49,15 @@ const applyRandomColorsToAll = () => {
     const randomIndex = Math.floor(Math.random() * validColors.length)
     const randomColor = validColors[randomIndex]
     applyColor(element, randomColor)
+  })
+}
+
+// Fonction pour changer la couleur des boutons
+const changeButtonColors = () => {
+  const randomIndex = Math.floor(Math.random() * validColors.length)
+  const randomColor = validColors[randomIndex]
+  document.querySelectorAll('button').forEach(button => {
+    button.style.backgroundColor = colors[randomColor][500]
   })
 }
 
@@ -118,10 +126,18 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
       </div>
     </div>
 
+    <!-- Bouton pour changer la couleur des boutons -->
+    <div class="w-full flex justify-end">
+      <button
+        @click="changeButtonColors"
+        class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
+      >
+        Change Button Colors
+      </button>
+    </div>
+
     <!-- Bouton pour appliquer des couleurs aléatoires à tous les éléments -->
-    <div
-      class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
-    >
+    <div>
       <button
         @click="applyRandomColorsToAll"
         class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
