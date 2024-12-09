@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { toggle } from '@/utils/toggle.js'
 
+// Données pour la section d'accueil
 const data = {
   greeting: 'Hey there!',
   name: 'Mathis PIETTE',
@@ -10,6 +11,7 @@ const data = {
   subtitle: "Curieux & Passionés d'IT",
 }
 
+// Références pour les éléments DOM
 const greetingRef = ref(null)
 const alternatingTextRef = ref(null)
 const contentRef = ref(null)
@@ -17,12 +19,14 @@ const showCursor = ref(true)
 const showContent = ref(false)
 
 let cursorInterval = null
+
+// Fonction afficher le texte lettre par lettre
 const typeWriter = (element, text, speed = 100) => {
   let i = 0
   return new Promise(resolve => {
     const timer = setInterval(() => {
       if (i < text.length) {
-        element.textContent += text.charAt(i)
+        element.textContent += text.charAt(i) // Ajoute une lettre à la fois
         i++
       } else {
         clearInterval(timer)
@@ -43,11 +47,15 @@ const eraseText = (element, speed = 50) => {
     }, speed)
   })
 }
+
+// Fonction pour faire clignoter le curseur
 const blinkCursor = () => {
   cursorInterval = setInterval(() => {
     showCursor.value = !showCursor.value
   }, 500)
 }
+
+// Fonction pour alterner le texte affiché
 const alternateText = async () => {
   if (data.secondaryName) {
     while (true) {
@@ -62,13 +70,17 @@ const alternateText = async () => {
     await typeWriter(alternatingTextRef.value, data.name, 100)
   }
 }
+
+// Lifecycle hook pour l'initialisation
 onMounted(async () => {
-  blinkCursor()
-  await typeWriter(greetingRef.value, data.greeting)
-  showContent.value = true
-  await new Promise(resolve => setTimeout(resolve, 1000)) // Wait for content to fade in
-  alternateText()
+  blinkCursor() // Démarre le clignotement du curseur
+  await typeWriter(greetingRef.value, data.greeting) // Affiche le message de salutation
+  showContent.value = true // Affiche le contenu
+  await new Promise(resolve => setTimeout(resolve, 1000)) // Attend que le contenu apparaisse
+  alternateText() // Démarre l'alternance du texte
 })
+
+// Lifecycle hook pour la disparition
 
 onUnmounted(() => {
   if (cursorInterval) clearInterval(cursorInterval)
