@@ -44,6 +44,16 @@ const handleButtonClick = () => {
   buttonColor.value = randomColor
   console.log(`Couleur de fond actuelle: ${randomColor}`)
 }
+
+// Fonction pour changer la couleur des éléments About
+const changeAboutColors = () => {
+  const randomColor = getRandomColor()
+  const heading = document.getElementById('about-heading')
+  const paragraph = document.getElementById('about-paragraph')
+  if (heading) heading.style.color = randomColor
+  if (paragraph) paragraph.style.color = randomColor
+}
+
 // Fonction pour recharger la page
 const reloadPage = () => {
   window.location.reload()
@@ -115,6 +125,14 @@ onUnmounted(() => {
             @click="reloadPage"
           >
             Reload Page
+          </button>
+        </div>
+        <div>
+          <button
+            class="w-full py-2 px-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all duration-300"
+            @click="changeAboutColors"
+          >
+            Change About Colors
           </button>
         </div>
       </div>
