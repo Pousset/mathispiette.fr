@@ -51,7 +51,10 @@ const changeButtonColors = () => {
   const randomIndex = Math.floor(Math.random() * validColors.length)
   const randomColor = validColors[randomIndex]
   document.querySelectorAll('button').forEach(button => {
-    button.style.backgroundColor = colors[randomColor][500]
+    if (button.id !== 'ignore-button') {
+      // vérifie si le bouton n'a pas un ID spécifique 'ignore-button'}
+      button.style.backgroundColor = colors[randomColor][500]
+    }
   })
 }
 
@@ -102,6 +105,7 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
       </div>
       <div class="grid grid-cols-8 gap-2">
         <button
+          id="ignore-button"
           v-for="color in validColors"
           :key="color"
           class="w-6 h-6 rounded-full transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-gray-900"

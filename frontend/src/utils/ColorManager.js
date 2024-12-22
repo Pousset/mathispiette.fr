@@ -29,7 +29,9 @@ function isValidColor(color) {
 
 export function applyColor(colorName) {
   if (!isValidColor(colorName)) {
-    console.warn(`Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`)
+    console.warn(
+      `Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`,
+    )
     colorName = DEFAULT_COLOR
   }
 
@@ -56,7 +58,9 @@ export const initializeButtonColor = loadSavedColor
 
 export function saveColor(colorName) {
   if (!isValidColor(colorName)) {
-    console.warn(`Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`)
+    console.warn(
+      `Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`,
+    )
     colorName = DEFAULT_COLOR
   }
 
@@ -69,7 +73,9 @@ export function useButtonColor() {
 
   function setButtonColor(colorName) {
     if (!isValidColor(colorName)) {
-      console.warn(`Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`)
+      console.warn(
+        `Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`,
+      )
       colorName = DEFAULT_COLOR
     }
 
@@ -78,7 +84,9 @@ export function useButtonColor() {
   }
 
   const displayColor = computed(() => {
-    return selectedColor.value.charAt(0).toUpperCase() + selectedColor.value.slice(1)
+    return (
+      selectedColor.value.charAt(0).toUpperCase() + selectedColor.value.slice(1)
+    )
   })
 
   return {
@@ -98,7 +106,9 @@ function isValidTextColor(color) {
 
 export function applyTextColor(colorName) {
   if (!isValidTextColor(colorName)) {
-    console.warn(`Invalid color: ${colorName}. Falling back to ${DEFAULT_TEXT_COLOR}`)
+    console.warn(
+      `Invalid color: ${colorName}. Falling back to ${DEFAULT_TEXT_COLOR}`,
+    )
     colorName = DEFAULT_TEXT_COLOR
   }
 
@@ -108,7 +118,9 @@ export function applyTextColor(colorName) {
 
 export function loadSavedTextColor() {
   const savedColor = localStorage.getItem('TextColor')
-  const validatedColor = isValidTextColor(savedColor) ? savedColor : DEFAULT_TEXT_COLOR
+  const validatedColor = isValidTextColor(savedColor)
+    ? savedColor
+    : DEFAULT_TEXT_COLOR
 
   if (savedColor !== validatedColor) {
     localStorage.setItem('TextColor', validatedColor)
@@ -120,7 +132,9 @@ export function loadSavedTextColor() {
 
 export function saveTextColor(colorName) {
   if (!isValidTextColor(colorName)) {
-    console.warn(`Invalid color: ${colorName}. Falling back to ${DEFAULT_TEXT_COLOR}`)
+    console.warn(
+      `Invalid color: ${colorName}. Falling back to ${DEFAULT_TEXT_COLOR}`,
+    )
     colorName = DEFAULT_TEXT_COLOR
   }
 
@@ -138,7 +152,9 @@ export function useTextColor() {
 
   function setTextColor(colorName) {
     if (!isValidTextColor(colorName)) {
-      console.warn(`Invalid color: ${colorName}. Falling back to ${DEFAULT_TEXT_COLOR}`)
+      console.warn(
+        `Invalid color: ${colorName}. Falling back to ${DEFAULT_TEXT_COLOR}`,
+      )
       colorName = DEFAULT_TEXT_COLOR
     }
 
@@ -147,7 +163,9 @@ export function useTextColor() {
   }
 
   const displayColor = computed(() => {
-    return selectedColor.value.charAt(0).toUpperCase() + selectedColor.value.slice(1)
+    return (
+      selectedColor.value.charAt(0).toUpperCase() + selectedColor.value.slice(1)
+    )
   })
 
   return {
