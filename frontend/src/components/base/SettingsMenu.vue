@@ -4,23 +4,13 @@ import { Palette } from 'lucide-vue-next'
 import ThemeSwitcher from '../settings/ThemeSwitcher.vue'
 import ButtonColorPicker from '../settings/ColorPicker.vue'
 import ScrollBarToggle from '../settings/ScrollBarToggle.vue'
-import { isOpen, toggle } from '../../utils/toggle.js'
 import { useTheme } from '@/utils/themeManager.js'
-
-// Fonction pour fermer le popover si on clique en dehors
-const closePopover = event => {
-  if (
-    isOpen.value &&
-    !event.target.closest('.theme-customizer-button') &&
-    !event.target.closest('.theme-customizer-popover')
-  ) {
-    isOpen.value = false
-  }
-}
 
 // Références pour les couleurs sauvegardées
 const savedColor = ref(localStorage.getItem('popoverBgColor') || 'bg-white')
 const buttonColor = ref('bg-blue-500')
+const isOpen = ref(false)
+const isLocked = ref(false) // État pour verrouiller le menu
 
 // Fonction pour générer une couleur aléatoire
 const getRandomColor = () => {
@@ -62,9 +52,34 @@ const reloadPage = () => {
 // Utilisation du thème
 const { effectiveTheme } = useTheme()
 
+const toggle = () => {
+  isOpen.value = !isOpen.value
+  if (isOpen.value) {
+    document.addEventListener('click', closePopover)
+  } else {
+    document.removeEventListener('click', closePopover)
+  }
+}
+
+// Fonction pour fermer le popover si on clique en dehors
+const closePopover = event => {
+  if (
+    isOpen.value &&
+    !event.target.closest('.theme-customizer-button') &&
+    !event.target.closest('.theme-customizer-popover') &&
+    !isLocked.value
+  ) {
+    isOpen.value = false
+    document.removeEventListener('click', closePopover)
+  }
+}
+
+const toggleLock = () => {
+  isLocked.value = !isLocked.value
+}
+
 // Ajout des écouteurs d'événements au montage du composant
 onMounted(() => {
-  document.addEventListener('click', closePopover)
   const popover = document.querySelector('.theme-customizer-popover')
   if (popover) {
     popover.style.transition = 'background-color 0.5s ease'
@@ -133,6 +148,15 @@ onUnmounted(() => {
             @click="changeAboutColors"
           >
             Change About Colors
+          </button>
+        </div>
+
+        <div>
+          <button
+            class="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all duration-300"
+            @click="toggleLock"
+          >
+            {{ isLocked ? 'Unlock Menu' : 'Lock Menu' }}
           </button>
         </div>
       </div>
