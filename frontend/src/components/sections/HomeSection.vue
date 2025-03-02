@@ -73,6 +73,10 @@ onMounted(async () => {
 onUnmounted(() => {
   if (cursorInterval) clearInterval(cursorInterval)
 })
+
+const handleBottomButtonClick = () => {
+  console.log('Bottom Button Clicked!')
+}
 </script>
 
 <template>
@@ -112,6 +116,14 @@ onUnmounted(() => {
           Customize your experience
         </button>
       </div>
+    </div>
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+      <button
+        @click="handleBottomButtonClick"
+        class="inline-block px-8 py-3 font-bold text-white rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-gradient-to-r from-green-400 via-blue-500 to-indigo-500 hover:from-green-500 hover:via-blue-600 hover:to-indigo-600"
+      >
+        Bottom Button
+      </button>
     </div>
   </div>
 </template>
