@@ -164,7 +164,7 @@ onUnmounted(() => {
         <div @click="handleButtonColorPickerClick">
           <ButtonColorPicker />
         </div>
-        <div>
+        <!-- <div>
           <button
             :class="`${buttonColor.value} w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300`"
             @click="handleButtonClick"
@@ -174,7 +174,7 @@ onUnmounted(() => {
               >Change BG</span
             >
           </button>
-        </div>
+        </div> -->
         <div>
           <button
             class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
