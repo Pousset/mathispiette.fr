@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { toggle } from '@/utils/toggle.js'
 
+// Définition des données utilisées dans le composant
 const data = {
   greeting: 'Hey there!',
   name: 'Mathis PIETTE',
@@ -10,6 +11,7 @@ const data = {
   subtitle: "Curieux & Passionés d'IT",
 }
 
+// Références pour manipuler les éléments du DOM
 const greetingRef = ref(null)
 const alternatingTextRef = ref(null)
 const contentRef = ref(null)
@@ -17,6 +19,8 @@ const showCursor = ref(true)
 const showContent = ref(false)
 
 let cursorInterval = null
+
+// Fonction pour simuler l'effet d'écriture
 const typeWriter = (element, text, speed = 100) => {
   let i = 0
   return new Promise(resolve => {
@@ -31,6 +35,8 @@ const typeWriter = (element, text, speed = 100) => {
     }, speed)
   })
 }
+
+// Fonction pour effacer le texte
 const eraseText = (element, speed = 50) => {
   return new Promise(resolve => {
     const timer = setInterval(() => {
@@ -43,11 +49,15 @@ const eraseText = (element, speed = 50) => {
     }, speed)
   })
 }
+
+// Fonction pour faire clignoter le curseur
 const blinkCursor = () => {
   cursorInterval = setInterval(() => {
     showCursor.value = !showCursor.value
   }, 500)
 }
+
+// Fonction pour alterner le texte affiché
 const alternateText = async () => {
   if (data.secondaryName) {
     while (true) {
@@ -62,21 +72,27 @@ const alternateText = async () => {
     await typeWriter(alternatingTextRef.value, data.name, 100)
   }
 }
+
+// Actions à effectuer lors du montage du composant
 onMounted(async () => {
   blinkCursor()
   await typeWriter(greetingRef.value, data.greeting)
   showContent.value = true
-  await new Promise(resolve => setTimeout(resolve, 1000)) // Wait for content to fade in
+  await new Promise(resolve => setTimeout(resolve, 1000)) // Attendre que le contenu apparaisse
   alternateText()
 })
 
+// Actions à effectuer lors du démontage du composant
 onUnmounted(() => {
   if (cursorInterval) clearInterval(cursorInterval)
 })
 
+// Gestionnaire pour le clic sur le bouton du bas
 const handleBottomButtonClick = () => {
   console.log('Bottom Button Clicked!')
 }
+
+// Gestionnaire pour le clic sur le bouton de gauche
 const handleLeftButtonClick = () => {
   console.log('Left Button Clicked!')
 }

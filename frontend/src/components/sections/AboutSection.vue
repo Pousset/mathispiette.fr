@@ -1,10 +1,13 @@
 <template>
+  <!-- Conteneur principal avec une largeur maximale et un centrage du texte -->
   <div class="max-w-2xl text-center px-4">
+    <!-- Titre de la section "About Me" -->
     <h2
       class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6"
     >
       About Me
     </h2>
+    <!-- Paragraphe de description personnelle -->
     <p class="text-sm md:text-lg text-gray-600 dark:text-gray-300">
       Bonjour! Je m’appelle Mathis PIETTE, je suis un développeur web full stack
       passionné qui s'intéresse de près au design d'interface. Ma spécialité est

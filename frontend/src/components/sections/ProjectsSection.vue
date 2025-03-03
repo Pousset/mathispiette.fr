@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import Carousel from '../ui/TheCarousel.vue'
 
+// Définition des données des projets
 const data = [
   {
     title: 'Fedhubs.org',
@@ -28,7 +29,6 @@ const data = [
     title: 'Fedhubs.com',
     description:
       "Première version du Site de présentation de l'application Fedhubs, divisé en 3 parties : particulier + professionnel + partenaire",
-
     link: 'https://fedhubs.com/',
     technologies: ['Bootstrap', 'Firebase'],
   },
@@ -48,6 +48,7 @@ const data = [
   },
 ]
 
+// Options de réactivité pour le carrousel
 const responsiveOptions = ref([
   {
     breakpoint: '1024px',
@@ -75,7 +76,7 @@ const responsiveOptions = ref([
       My Projects
     </h2>
 
-    <!-- Mobile Carousel: One item visible -->
+    <!-- Carrousel pour mobile -->
     <Carousel
       v-if="data.length > 2"
       :items="data"
@@ -122,7 +123,7 @@ const responsiveOptions = ref([
       </template>
     </Carousel>
 
-    <!-- Tablet Carousel: Two items visible -->
+    <!-- Carrousel pour tablette : deux éléments visibles -->
     <Carousel
       v-if="data.length > 2"
       :items="data"
@@ -169,7 +170,7 @@ const responsiveOptions = ref([
       </template>
     </Carousel>
 
-    <!-- Desktop Carousel: Three items visible -->
+    <!-- Carrousel pour bureau : trois éléments visibles -->
     <Carousel
       v-if="data.length > 2"
       :items="data"
@@ -218,7 +219,7 @@ const responsiveOptions = ref([
       </template>
     </Carousel>
 
-    <!-- Grid view for when less than 2 projects -->
+    <!-- Vue en grille pour moins de 2 projets -->
     <div v-else class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <div
         v-for="project in data"
