@@ -34,7 +34,7 @@ const getRandomColor = () => {
 
 // Fonction pour gérer le clic sur le bouton et changer la couleur de fond
 const handleButtonClick = () => {
-  console.log('Nouveau Bouton cliqué')
+  console.log('Change BG Button Clicked')
   const randomColor = getRandomColor()
   const popover = document.querySelector('.theme-customizer-popover')
   popover.style.transition = 'background-color 0.5s ease'
@@ -47,7 +47,23 @@ const handleButtonClick = () => {
 
 // Fonction pour recharger la page
 const reloadPage = () => {
+  console.log('Reload Page Button Clicked')
   window.location.reload()
+}
+
+// Fonction pour gérer le clic sur le bouton ScrollBarToggle
+const handleScrollBarToggleClick = () => {
+  console.log('ScrollBarToggle Button Clicked')
+}
+
+// Fonction pour gérer le clic sur le bouton ThemeSwitcher
+const handleThemeSwitcherClick = () => {
+  console.log('ThemeSwitcher Button Clicked')
+}
+
+// Fonction pour gérer le clic sur le bouton ButtonColorPicker
+const handleButtonColorPickerClick = () => {
+  console.log('ButtonColorPicker Button Clicked')
 }
 
 // Utilisation du thème
@@ -73,7 +89,7 @@ onUnmounted(() => {
   <div class="relative">
     <!-- Bouton pour ouvrir le menu de personnalisation -->
     <button
-      class="theme-customizer-button fixed bottom-4 right-4 z-50 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+      class="theme-customizer-button fixed top-4 right-4 z-50 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
       @click.stop="toggle"
       aria-haspopup="true"
       :aria-expanded="isOpen"
@@ -84,19 +100,19 @@ onUnmounted(() => {
     <!-- Popover de personnalisation -->
     <div
       v-if="isOpen"
-      class="theme-customizer-popover fixed bottom-20 right-4 w-72 md:w-96 rounded-2xl shadow-xl bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-50 overflow-hidden"
+      class="theme-customizer-popover fixed top-16 right-4 w-72 md:w-96 rounded-2xl shadow-xl bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-50 overflow-hidden"
       role="menu"
       aria-orientation="vertical"
       aria-labelledby="theme-menu"
     >
       <div class="p-4 space-y-6" role="none">
-        <div>
+        <!-- <div @click="handleScrollBarToggleClick">
           <ScrollBarToggle />
-        </div>
-        <div>
+        </div> -->
+        <div @click="handleThemeSwitcherClick">
           <ThemeSwitcher />
         </div>
-        <div>
+        <div @click="handleButtonColorPickerClick">
           <ButtonColorPicker />
         </div>
         <div>
