@@ -96,6 +96,12 @@ const handleBottomButtonClick = () => {
 const handleLeftButtonClick = () => {
   console.log('Left Button Clicked!')
 }
+
+// Gestionnaire pour le clic sur le bouton "Customize your experience"
+const handleCustomizeClick = () => {
+  console.log('Customize your experience Button Clicked!')
+  toggle()
+}
 </script>
 
 <template>
@@ -129,7 +135,7 @@ const handleLeftButtonClick = () => {
           {{ data.subtitle }}
         </p>
         <button
-          @click.stop="toggle"
+          @click.stop="handleCustomizeClick"
           class="inline-block px-8 py-3 font-bold text-white rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 hover:from-purple-500 hover:via-pink-600 hover:to-red-600"
         >
           Customize your experience
