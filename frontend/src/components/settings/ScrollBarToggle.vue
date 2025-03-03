@@ -27,10 +27,9 @@ const toggleScrollbar = () => {
       "
     >
       <!-- Indicateur de l'état de la barre de défilement -->
-      <span
-        class="inline-block h-4 w-4 transform rounded-full bg-white transition"
-        :class="showScrollbar ? 'translate-x-6' : 'translate-x-1'"
-      />
+
+      class="inline-block h-4 w-4 transform rounded-full bg-white transition"
+      :class="showScrollbar ? 'translate-x-6' : 'translate-x-1'" >
     </button>
   </div>
 </template>
