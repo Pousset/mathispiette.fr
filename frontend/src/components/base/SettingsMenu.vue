@@ -44,6 +44,7 @@ const handleButtonClick = () => {
   buttonColor.value = randomColor
   console.log(`Couleur de fond actuelle: ${randomColor}`)
 }
+
 // Fonction pour recharger la page
 const reloadPage = () => {
   window.location.reload()
