@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { Palette } from 'lucide-vue-next'
+import { Palette, RefreshCw, Lock, Unlock, Shuffle } from 'lucide-vue-next'
 import ThemeSwitcher from '../settings/ThemeSwitcher.vue'
 import ButtonColorPicker from '../settings/ColorPicker.vue'
 import ScrollBarToggle from '../settings/ScrollBarToggle.vue'
@@ -164,23 +164,20 @@ onUnmounted(() => {
         <div @click="handleButtonColorPickerClick">
           <ButtonColorPicker />
         </div>
-        <!-- <div>
+        <div>
           <button
-            :class="`${buttonColor.value} w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300`"
+            class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
             @click="handleButtonClick"
           >
-            <span
-              :class="effectiveTheme === 'dark' ? 'text-white' : 'text-black'"
-              >Change BG</span
-            >
+            <Shuffle class="w-6 h-6 mx-auto" />
           </button>
-        </div> -->
+        </div>
         <div>
           <button
             class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
             @click="reloadPage"
           >
-            Reload Page
+            <RefreshCw class="w-6 h-6 mx-auto" />
           </button>
         </div>
         <div>
@@ -188,7 +185,10 @@ onUnmounted(() => {
             class="w-full py-2 px-4 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-all duration-300"
             @click="toggleLock"
           >
-            {{ isLocked.value ? 'Unlock Menu' : 'Lock Menu' }}
+            <component
+              :is="isLocked.value ? Unlock : Lock"
+              class="w-6 h-6 mx-auto"
+            />
           </button>
         </div>
       </div>
