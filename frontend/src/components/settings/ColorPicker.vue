@@ -51,7 +51,9 @@ const changeButtonColors = () => {
   const randomIndex = Math.floor(Math.random() * validColors.length)
   const randomColor = validColors[randomIndex]
   document.querySelectorAll('button').forEach(button => {
-    button.style.backgroundColor = colors[randomColor][500]
+    if (!button.closest('.color-picker-panel')) {
+      button.style.backgroundColor = colors[randomColor][500]
+    }
   })
 }
 
@@ -91,7 +93,7 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
     </div>
 
     <!-- Panneau de sélection des couleurs -->
-    <div class="w-full space-y-3">
+    <div class="w-full space-y-3 color-picker-panel">
       <div class="flex items-center">
         <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
           Current Color for {{ selectedElement }}:
