@@ -149,8 +149,6 @@ const handleCustomizeClick = () => {
       >
         Left Button
       </button> -->
-      <button
-      </button> -->
       <!-- <button
         @click="handleBottomButtonClick"
         class="inline-block px-8 py-3 font-bold text-white rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 bg-gradient-to-r from-green-400 via-blue-500 to-indigo-500 hover:from-green-500 hover:via-blue-600 hover:to-indigo-600"
