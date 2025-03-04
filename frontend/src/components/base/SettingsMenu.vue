@@ -258,7 +258,6 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
           class="flex items-center space-x-2"
         >
           <ThemeSwitcher />
-          <span class="text-gray-700 dark:text-gray-300">Switch Theme</span>
         </div>
         <div
           @click="handleButtonColorPickerClick"
