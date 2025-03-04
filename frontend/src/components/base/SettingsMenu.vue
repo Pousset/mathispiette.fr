@@ -252,7 +252,6 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
           class="flex items-center space-x-2"
         >
           <ScrollBarToggle />
-          <span class="text-gray-700 dark:text-gray-300">Toggle Scrollbar</span>
         </div>
         <div
           @click="handleThemeSwitcherClick"
@@ -266,9 +265,6 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
           class="flex items-center space-x-2"
         >
           <ButtonColorPicker />
-          <span class="text-gray-700 dark:text-gray-300"
-            >Pick Button Color</span
-          >
         </div>
         <div class="grid grid-cols-2 gap-2">
           <button
