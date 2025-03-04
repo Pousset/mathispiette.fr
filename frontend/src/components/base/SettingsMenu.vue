@@ -115,6 +115,7 @@ const dragPopover = event => {
 // Fonction pour verrouiller/déverrouiller le menu
 const toggleLock = () => {
   isLocked.value = !isLocked.value
+  console.log(`isLocked: ${isLocked.value}`)
   if (isLocked.value) {
     document.removeEventListener('click', closePopover)
   } else {
@@ -299,11 +300,16 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
         </div>
         <div>
           <button
-            class="w-full py-2 px-4 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-all duration-300 flex items-center justify-center space-x-2"
+            :class="[
+              'w-full py-2 px-4 text-white rounded-lg transition-all duration-300 flex items-center justify-center space-x-2',
+              isLocked.value
+                ? 'bg-red-500 hover:bg-red-600'
+                : 'bg-green-500 hover:bg-green-600',
+            ]"
             @click="toggleLock"
           >
             <component :is="isLocked.value ? Unlock : Lock" class="w-6 h-6" />
-            <span>{{ isLocked.value ? 'Unlock Menu' : 'Lock Menu' }}</span>
+            <span>{{ isLocked.value ? 'Menu Unlock' : 'Menu Lock' }}</span>
           </button>
         </div>
       </div>
