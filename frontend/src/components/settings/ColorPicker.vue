@@ -118,25 +118,5 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
         </button>
       </div>
     </div>
-
-    <!-- Bouton pour changer la couleur des boutons -->
-    <div class="w-full flex justify-end">
-      <button
-        @click="changeButtonColors"
-        class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
-      >
-        Change Button Colors
-      </button>
-    </div>
-
-    <!-- Bouton pour appliquer des couleurs aléatoires à tous les éléments -->
-    <div>
-      <button
-        @click="applyRandomColorsToAll"
-        class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
-      >
-        Apply Random Colors to All
-      </button>
-    </div>
   </div>
 </template>

@@ -1,11 +1,20 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { Palette, RefreshCw, Lock, Unlock, Shuffle } from 'lucide-vue-next'
+import {
+  Palette,
+  RefreshCw,
+  Lock,
+  Unlock,
+  Shuffle,
+  CheckIcon,
+} from 'lucide-vue-next'
 import ThemeSwitcher from '../settings/ThemeSwitcher.vue'
 import ButtonColorPicker from '../settings/ColorPicker.vue'
 import ScrollBarToggle from '../settings/ScrollBarToggle.vue'
 import { isOpen, toggle } from '../../utils/toggle.js'
 import { useTheme } from '@/utils/themeManager.js'
+import colors from 'tailwindcss/colors'
+import { validColors } from '../../utils/ColorManager.js'
 
 // Références pour les couleurs sauvegardées
 const savedColor = ref(localStorage.getItem('popoverBgColor') || 'bg-white')
@@ -131,6 +140,67 @@ onUnmounted(() => {
   document.removeEventListener('mousemove', dragPopover)
   document.removeEventListener('mouseup', stopDrag)
 })
+
+// Définition de la couleur par défaut
+const DEFAULT_COLOR = 'white'
+
+// État réactif pour les couleurs sélectionnées
+const selectedColors = ref({
+  greeting: localStorage.getItem('greetingColor') || DEFAULT_COLOR,
+  name: localStorage.getItem('nameColor') || DEFAULT_COLOR,
+  title: localStorage.getItem('titleColor') || DEFAULT_COLOR,
+  subtitle: localStorage.getItem('subtitleColor') || DEFAULT_COLOR,
+})
+
+// État réactif pour l'élément actuellement sélectionné
+const selectedElement = ref('greeting')
+
+// Fonction pour appliquer une couleur à un élément
+const applyColor = (element, colorName) => {
+  if (!validColors.includes(colorName)) {
+    console.warn(
+      `Invalid color: ${colorName}. Falling back to ${DEFAULT_COLOR}`,
+    )
+    colorName = DEFAULT_COLOR
+  }
+  selectedColors.value[element] = colorName
+  localStorage.setItem(`${element}Color`, colorName)
+  document.documentElement.style.setProperty(
+    `--${element}-color`,
+    colors[colorName][500],
+  )
+  document.querySelectorAll(`.${element}`).forEach(el => {
+    el.style.setProperty('color', colors[colorName][500], 'important')
+  })
+}
+
+// Fonction pour appliquer des couleurs aléatoires à tous les éléments
+const applyRandomColorsToAll = () => {
+  Object.keys(selectedColors.value).forEach(element => {
+    const randomIndex = Math.floor(Math.random() * validColors.length)
+    const randomColor = validColors[randomIndex]
+    applyColor(element, randomColor)
+  })
+}
+
+// Fonction pour changer la couleur des boutons
+const changeButtonColors = () => {
+  const randomIndex = Math.floor(Math.random() * validColors.length)
+  const randomColor = validColors[randomIndex]
+  document.querySelectorAll('button').forEach(button => {
+    if (!button.closest('.color-picker-panel')) {
+      button.style.backgroundColor = colors[randomColor][500]
+    }
+  })
+}
+
+// Fonction pour obtenir la classe d'un bouton selon sa sélection
+const getButtonClass = (color, selectedColor) => ({
+  'ring-2 ring-offset-2 ring-white dark:ring-gray-900': color === selectedColor,
+})
+
+// Fonction pour afficher le nom de la couleur avec une majuscule initiale
+const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
 </script>
 
 <template>
@@ -176,40 +246,64 @@ onUnmounted(() => {
             ></path>
           </svg>
         </button>
-        <div @click="handleScrollBarToggleClick">
+        <div
+          @click="handleScrollBarToggleClick"
+          class="flex items-center space-x-2"
+        >
           <ScrollBarToggle />
+          <span class="text-gray-700 dark:text-gray-300">Toggle Scrollbar</span>
         </div>
-        <div @click="handleThemeSwitcherClick">
+        <div
+          @click="handleThemeSwitcherClick"
+          class="flex items-center space-x-2"
+        >
           <ThemeSwitcher />
+          <span class="text-gray-700 dark:text-gray-300">Switch Theme</span>
         </div>
-        <div @click="handleButtonColorPickerClick">
+        <div
+          @click="handleButtonColorPickerClick"
+          class="flex items-center space-x-2"
+        >
           <ButtonColorPicker />
+          <span class="text-gray-700 dark:text-gray-300"
+            >Pick Button Color</span
+          >
         </div>
-        <div>
+        <div class="grid grid-cols-2 gap-2">
           <button
-            class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
+            class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300 flex items-center justify-center space-x-2"
             @click="handleButtonClick"
           >
-            <Shuffle class="w-6 h-6 mx-auto" />
+            <Shuffle class="w-6 h-6" />
+            <span>Shuffle Colors</span>
           </button>
-        </div>
-        <div>
           <button
-            class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
+            class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300 flex items-center justify-center space-x-2"
             @click="reloadPage"
           >
-            <RefreshCw class="w-6 h-6 mx-auto" />
+            <RefreshCw class="w-6 h-6" />
+            <span>Reload Page</span>
+          </button>
+          <button
+            class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300 flex items-center justify-center space-x-2"
+            @click="changeButtonColors"
+          >
+            <span>Change Button Colors</span>
+          </button>
+          <button
+            class="w-full py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300 flex items-center justify-center space-x-2"
+            @click="applyRandomColorsToAll"
+          >
+            <span>Apply Random Colors to All</span>
           </button>
         </div>
         <div>
           <button
-            class="w-full py-2 px-4 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-all duration-300"
+            class="w-full py-2 px-4 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-all duration-300 flex items-center justify-center space-x-2"
             @click="toggleLock"
           >
-            <component
-              :is="isLocked.value ? Unlock : Lock"
-              class="w-6 h-6 mx-auto"
-            />
+            <component :is="isLocked.value ? Unlock : Lock" class="w-6 h-6" />
+            <span>{{ isLocked.value ? 'Unlock Menu' : 'Lock Menu' }}</span>
           </button>
         </div>
       </div>
