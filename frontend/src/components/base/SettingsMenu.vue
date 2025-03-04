@@ -33,6 +33,7 @@ const getRandomColor = () => {
 // Fonction pour gérer le clic sur le bouton et changer la couleur de fond
 const handleButtonClick = () => {
   console.log('Change BG Button Clicked')
+  console.log('Change BG Button Clicked')
   const randomColor = getRandomColor()
   const popover = document.querySelector('.theme-customizer-popover')
   popover.style.transition = 'background-color 0.5s ease'
@@ -208,7 +209,7 @@ const displayColor = color => color.charAt(0).toUpperCase() + color.slice(1)
   <div class="relative">
     <!-- Bouton pour ouvrir le menu de personnalisation -->
     <button
-      class="theme-customizer-button fixed bottom-4 right-4 z-50 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+      class="theme-customizer-button fixed top-4 right-4 z-50 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-primary-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
       @click.stop="toggle"
       aria-haspopup="true"
       :aria-expanded="isOpen"
