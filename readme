@@ -1,10 +1,10 @@
 # Portfolio en Vue.js 🎨🚀
 
-Bienvenue dans le dépôt de mon portfolio personnel ! Ce projet a été développé avec Vue.js 3 et utilise des outils modernes pour créer une interface élégante, rapide et responsive. ✨
+Bienvenue dans le repository de mon portfolio personnel ! Ce projet a été développé avec Vue.js 3 et utilise des outils modernes pour créer une interface élégante, rapide et responsive. ✨
 
 ## 🖥️ Aperçu
 
-Un portfolio en ligne pour mettre en avant vos compétences, projets, et expériences professionnelles, avec une interface utilisateur soignée. Ce projet peut être facilement personnalisé pour vos propres besoins.
+Un portfolio en ligne pour mettre en avant mes compétences, projets, et expériences professionnelles, avec une interface utilisateur soignée.
 
 ## Démo en ligne
 
@@ -13,7 +13,7 @@ Un portfolio en ligne pour mettre en avant vos compétences, projets, et expéri
 ## 🛠️ Fonctionnalités
 
 - **Responsive Design** : Adapté aux écrans de toutes tailles (mobile, tablette, bureau).
-- **Section Projets** : Présente vos meilleurs travaux avec des descriptions et des liens.
+- **Section Projets** : Présente mes meilleurs travaux avec des descriptions et des liens.
 - **Section Contact** : Intégration d’un formulaire fonctionnel pour recevoir des messages.
 - **Transitions animées** : Une UX agréable grâce aux animations Vue.
 - **Facile à personnaliser** : Le code est organisé pour permettre des modifications rapides.
@@ -24,15 +24,6 @@ Un portfolio en ligne pour mettre en avant vos compétences, projets, et expéri
 - **Vite** : Outil de bundling rapide pour le développement.
 - **Tailwind CSS** : Framework CSS utilitaire pour un design propre et moderne.
 
-
-
-📌 Personnalisation
-
-Pour adapter ce portfolio à vos besoins :
-
-    Modifiez les données dans les fichiers du dossier src/views/ (par exemple, Projects.vue pour ajouter vos projets).
-    Mettez à jour les styles dans src/assets/ si nécessaire.
-    Remplacez les images et icônes dans le dossier public/.
 
 ✨ Contribuer
 
