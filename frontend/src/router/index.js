@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PortfolioView from '@/views/PortfolioView.vue'
-import RegisterView from '@/views/RegisterView.vue'
 
 // Vérifie si l'utilisateur est connecté
 const isAuthenticated = () => {
@@ -8,11 +7,6 @@ const isAuthenticated = () => {
 }
 
 const routes = [
-  {
-    path: '/register',
-    name: 'Register',
-    component: RegisterView,
-  },
   {
     path: '/:section?',
     component: PortfolioView,

@@ -10,9 +10,11 @@ const logout = () => {
 </script>
 
 <template>
-  <div class="p-6">
-    <h1 class="text-2xl font-bold mb-4">Bienvenue !</h1>
-    <button @click="logout" class="btn">Se déconnecter</button>
+  <div class="flex items-center justify-center h-screen">
+    <div class="text-center">
+      <h1 class="text-2xl font-bold mb-4">Bienvenue !</h1>
+      <button @click="logout" class="btn">Se déconnecter</button>
+    </div>
   </div>
 </template>
 

@@ -219,6 +219,5 @@ onMounted(() => {
       @navigate="navigateToSection"
       class="fixed right-4 top-1/2 -translate-y-1/2 z-20"
     />
-    <SettingsMenu class="z-20" />
   </div>
 </template>

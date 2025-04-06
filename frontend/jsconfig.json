@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/base/TheCaroussel.vue*"]
+      "@/*": ["./src/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

@@ -3,6 +3,8 @@ import { onMounted } from 'vue'
 import { loadSavedColor } from './utils/ColorManager'
 import { initializeTheme } from './utils/themeManager'
 import ThemeCustomizer from './components/ui/ThemeCustomizer.vue'
+import RegisterButton from '@/components/auth/RegisterButton.vue'
+import SettingsMenu from '@/components/base/SettingsMenu.vue'
 
 onMounted(() => {
   loadSavedColor()
@@ -10,6 +12,10 @@ onMounted(() => {
 })
 </script>
 <template>
-  <router-view />
-  <ThemeCustomizer />
+  <div>
+    <RegisterButton />
+    <router-view />
+    <ThemeCustomizer />
+    <SettingsMenu />
+  </div>
 </template>
