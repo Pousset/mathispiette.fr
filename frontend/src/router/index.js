@@ -1,21 +1,33 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PortfolioView from '@/views/PortfolioView.vue'
-import RegisterView from '@/views/RegisterView.vue' // ← Assure-toi que cette importation est correcte
+import RegisterView from '@/views/RegisterView.vue'
+
+// Vérifie si l'utilisateur est connecté
+const isAuthenticated = () => {
+  return !!sessionStorage.getItem('user') // Retourne true si l'utilisateur est connecté
+}
 
 const routes = [
   {
-    path: '/register', // ← La route pour le formulaire d'inscription
+    path: '/register',
     name: 'Register',
     component: RegisterView,
   },
   {
-    path: '/:section?', // ← Ta route dynamique pour Portfolio
+    path: '/:section?',
     component: PortfolioView,
   },
   {
     path: '/succesLogin',
     name: 'SuccesLogin',
     component: () => import('@/views/SuccesLogin.vue'),
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated()) {
+        next() // Autorise l'accès si l'utilisateur est connecté
+      } else {
+        next('/') // Redirige vers la page d'accueil si non connecté
+      }
+    },
   },
 ]
 

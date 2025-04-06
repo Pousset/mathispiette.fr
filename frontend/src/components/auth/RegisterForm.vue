@@ -89,7 +89,8 @@ const login = async () => {
   if (res.ok) {
     message.value = 'Connexion réussie !'
     errorMessage.value = ''
-    router.push('/succesLogin') // Redirection vers la vue "succesLogin"
+    sessionStorage.setItem('user', JSON.stringify(data)) // Stocke l'utilisateur connecté
+    router.push('/succesLogin') // Redirection vers la vue "SuccesLogin"
   } else {
     errorMessage.value = data.message || 'Utilisateur inexistant'
     message.value = ''
