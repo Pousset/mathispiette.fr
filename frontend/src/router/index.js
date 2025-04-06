@@ -12,6 +12,11 @@ const routes = [
     path: '/:section?', // ← Ta route dynamique pour Portfolio
     component: PortfolioView,
   },
+  {
+    path: '/succesLogin',
+    name: 'SuccesLogin',
+    component: () => import('@/views/SuccesLogin.vue'),
+  },
 ]
 
 const router = createRouter({
