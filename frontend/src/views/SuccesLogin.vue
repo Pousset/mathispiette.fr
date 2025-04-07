@@ -3,22 +3,20 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 // Importez les images
-import melinCards from '@/assets/melin_cards.jpg'
-import melinCards2 from '@/assets/melin_cards2.jpg'
+import barImage from '@/assets/bar.jpg'
+import comptoirImage from '@/assets/comptoir.jpg'
 
 const router = useRouter()
-const clickCount = ref(0) // Compteur de clics
-const imageSrc = ref(melinCards) // Source de l'image
+const imageSrc = ref(barImage) // Image initiale
 
 const logout = () => {
   sessionStorage.removeItem('user') // Supprime l'état de connexion
   router.push('/') // Redirige vers la page d'accueil
 }
 
-const incrementClickCount = () => {
-  clickCount.value++ // Incrémente le compteur
-  if (clickCount.value >= 10) {
-    imageSrc.value = melinCards2 // Change l'image après 10 clics
+const enterBar = () => {
+  if (imageSrc.value === barImage) {
+    imageSrc.value = comptoirImage // Change l'image au clic
   }
 }
 </script>
@@ -37,13 +35,10 @@ const incrementClickCount = () => {
       <div class="text-center">
         <img
           :src="imageSrc"
-          alt="Melin Cards"
+          alt="Bar"
           class="w-64 h-auto rounded shadow-lg cursor-pointer"
-          @click="incrementClickCount"
+          @click="enterBar"
         />
-        <p class="mt-4 text-lg font-medium text-gray-700">
-          Nombre de clics : {{ clickCount }}
-        </p>
       </div>
     </div>
   </div>
