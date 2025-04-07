@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { User } from 'lucide-vue-next' // Import de l'icône User depuis lucide-vue-next
+import { User } from 'lucide-vue-next' 
 
 const isMenuOpen = ref(false)
 const username = ref('')
