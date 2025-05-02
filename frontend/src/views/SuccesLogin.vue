@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import Navbar from '@/components/ui/Navbar.vue'
 
 // Importez les images
 import barImage from '@/assets/bar.jpg'
@@ -24,11 +25,7 @@ const enterBar = () => {
 <template>
   <div class="h-screen flex flex-col">
     <!-- Navbar -->
-    <nav
-      class="bg-gray-800 text-white px-4 py-2 flex justify-center items-center"
-    >
-      <button @click="logout" class="btn">Se déconnecter</button>
-    </nav>
+    <Navbar />
 
     <!-- Contenu principal -->
     <div class="flex-grow flex items-center justify-center">
@@ -43,9 +40,3 @@ const enterBar = () => {
     </div>
   </div>
 </template>
-
-<style scoped>
-.btn {
-  @apply bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600;
-}
-</style>

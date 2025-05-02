@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PortfolioView from '@/views/PortfolioView.vue'
+import Muscu from '@/views/Muscu.vue'
 
 // Vérifie si l'utilisateur est connecté
 const isAuthenticated = () => {
@@ -22,6 +23,11 @@ const routes = [
         next('/') // Redirige vers la page d'accueil si non connecté
       }
     },
+  },
+  {
+    path: '/muscu',
+    name: 'Muscu',
+    component: Muscu,
   },
 ]
 
