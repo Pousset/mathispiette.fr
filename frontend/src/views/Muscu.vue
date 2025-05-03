@@ -10,33 +10,89 @@ const program = ref([
         jour: 1,
         exercices: ['5', '4', '3', '2', '1 (30s à 1min de repos)'],
         open: false,
+        valide: false,
       },
-      { jour: 2, exercices: ['6', '5', '4', '3', '2'], open: false },
-      { jour: 3, exercices: ['7', '6', '5', '4', '3'], open: false },
+      {
+        jour: 2,
+        exercices: ['6', '5', '4', '3', '2'],
+        open: false,
+        valide: false,
+      },
+      {
+        jour: 3,
+        exercices: ['7', '6', '5', '4', '3'],
+        open: false,
+        valide: false,
+      },
     ],
   },
   {
     semaine: 2,
     jours: [
-      { jour: 1, exercices: ['8', '6', '4', '4', '2'], open: false },
-      { jour: 2, exercices: ['10', '8', '6', '4', '2'], open: false },
-      { jour: 3, exercices: ['12', '10', '8', '6', '4'], open: false },
+      {
+        jour: 1,
+        exercices: ['8', '6', '4', '4', '2'],
+        open: false,
+        valide: false,
+      },
+      {
+        jour: 2,
+        exercices: ['10', '8', '6', '4', '2'],
+        open: false,
+        valide: false,
+      },
+      {
+        jour: 3,
+        exercices: ['12', '10', '8', '6', '4'],
+        open: false,
+        valide: false,
+      },
     ],
   },
   {
     semaine: 3,
     jours: [
-      { jour: 1, exercices: ['15', '10', '8', '5', '5'], open: false },
-      { jour: 2, exercices: ['17', '12', '10', '6', '6'], open: false },
-      { jour: 3, exercices: ['20', '15', '10', '10', '5'], open: false },
+      {
+        jour: 1,
+        exercices: ['15', '10', '8', '5', '5'],
+        open: false,
+        valide: false,
+      },
+      {
+        jour: 2,
+        exercices: ['17', '12', '10', '6', '6'],
+        open: false,
+        valide: false,
+      },
+      {
+        jour: 3,
+        exercices: ['20', '15', '10', '10', '5'],
+        open: false,
+        valide: false,
+      },
     ],
   },
   {
     semaine: 4,
     jours: [
-      { jour: 1, exercices: ['max', '15', '10', '10', '5'], open: false },
-      { jour: 2, exercices: ['max', '15', '12', '10', '8'], open: false },
-      { jour: 3, exercices: ['Test : max pompes d’affilée'], open: false },
+      {
+        jour: 1,
+        exercices: ['max', '15', '10', '10', '5'],
+        open: false,
+        valide: false,
+      },
+      {
+        jour: 2,
+        exercices: ['max', '15', '12', '10', '8'],
+        open: false,
+        valide: false,
+      },
+      {
+        jour: 3,
+        exercices: ['Test : max pompes d’affilée'],
+        open: false,
+        valide: false,
+      },
     ],
   },
 ])
@@ -45,13 +101,17 @@ const activeDay = ref(null) // Variable pour suivre le jour actif
 const currentExerciseIndex = ref(null) // Index de l'exercice en cours
 const timer = ref(null) // Timer pour l'exercice
 const timerRunning = ref(false) // Indique si le timer est en cours
+let interval = null // Stocke le timer pour éviter les fuites mémoire
 
 const toggleDay = jour => {
   jour.open = !jour.open
 }
 
 const startProgram = jour => {
-  activeDay.value = jour // Définit le jour actif
+  activeDay.value = {
+    jour: jour.jour,
+    exercices: jour.exercices,
+  } // Définit le jour actif avec ses exercices
   currentExerciseIndex.value = null // Réinitialise l'index de l'exercice
 }
 
@@ -60,6 +120,7 @@ const stopProgram = () => {
   currentExerciseIndex.value = null // Réinitialise l'index de l'exercice
   timer.value = null // Réinitialise le timer
   timerRunning.value = false // Arrête le timer
+  if (interval) clearInterval(interval) // Annule le timer en cours
 }
 
 const startTraining = () => {
@@ -74,7 +135,9 @@ const validateExercise = () => {
     timerRunning.value = true
     timer.value = 90 // 1 minute 30 secondes
 
-    const interval = setInterval(() => {
+    if (interval) clearInterval(interval) // Annule tout timer précédent
+
+    interval = setInterval(() => {
       if (timer.value > 0) {
         timer.value--
       } else {
@@ -88,10 +151,14 @@ const validateExercise = () => {
     }, 1000)
   }
 }
+
+const validerJour = jour => {
+  jour.valide = true // Marque le jour comme validé
+}
 </script>
 
 <template>
-  <div class="h-screen flex flex-col">
+  <div class="h-screen flex flex-col overflow-auto">
     <!-- Navbar -->
     <Navbar />
 
@@ -114,6 +181,10 @@ const validateExercise = () => {
           <h3 class="text-xl font-semibold mb-4">
             Exercice : {{ activeDay.exercices[currentExerciseIndex] }}
           </h3>
+          <div class="text-sm text-gray-500 mt-2">
+            {{ currentExerciseIndex + 1 }}/{{ activeDay.exercices.length }}
+            exercices
+          </div>
           <div v-if="timerRunning" class="text-lg font-bold text-red-500">
             Temps restant : {{ Math.floor(timer / 60) }}m {{ timer % 60 }}s
           </div>
@@ -154,12 +225,26 @@ const validateExercise = () => {
                     {{ exercice }}
                   </li>
                 </ul>
-                <button
-                  @click.stop="startProgram(jour)"
-                  class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                >
-                  Lancer le programme
-                </button>
+                <div class="flex gap-2 mt-4">
+                  <button
+                    @click.stop="startProgram(jour)"
+                    class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                  >
+                    Lancer le programme
+                  </button>
+                  <button
+                    @click.stop="validerJour(jour)"
+                    :disabled="jour.valide"
+                    class="px-4 py-2 rounded text-white"
+                    :class="
+                      jour.valide
+                        ? 'bg-green-400 cursor-not-allowed'
+                        : 'bg-green-500 hover:bg-green-600'
+                    "
+                  >
+                    {{ jour.valide ? 'Jour validé ✅' : 'Valider le jour' }}
+                  </button>
+                </div>
               </div>
             </li>
           </ul>
