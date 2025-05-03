@@ -41,16 +41,18 @@ const program = ref([
   },
 ])
 
+const activeDay = ref(null) // Variable pour suivre le jour actif
+
 const toggleDay = jour => {
   jour.open = !jour.open
 }
 
 const startProgram = jour => {
-  console.log(`Programme du jour ${jour.jour} lancé !`)
+  activeDay.value = jour // Définit le jour actif
 }
 
-const stopProgram = jour => {
-  console.log(`Programme du jour ${jour.jour} arrêté !`)
+const stopProgram = () => {
+  activeDay.value = null // Réinitialise le jour actif
 }
 </script>
 
@@ -62,44 +64,54 @@ const stopProgram = jour => {
     <!-- Contenu principal -->
     <div class="flex-grow p-4">
       <h1 class="text-3xl font-bold mb-6">Programme de Musculation</h1>
-      <div v-for="semaine in program" :key="semaine.semaine" class="mb-6">
+      <div v-if="activeDay" class="mb-6">
         <h2 class="text-2xl font-semibold mb-4">
-          Semaine {{ semaine.semaine }}
+          Programme du Jour {{ activeDay.jour }}
         </h2>
-        <ul class="space-y-2">
-          <li
-            v-for="jour in semaine.jours"
-            :key="jour.jour"
-            class="p-4 bg-gray-100 rounded shadow cursor-pointer"
-            @click="toggleDay(jour)"
-          >
-            <div class="flex justify-between items-center">
-              <strong>Jour {{ jour.jour }}</strong>
-              <span>{{ jour.open ? '▲' : '▼' }}</span>
-            </div>
-            <div v-if="jour.open" class="mt-2 text-gray-700">
-              <ul class="list-disc pl-6">
-                <li v-for="exercice in jour.exercices" :key="exercice">
-                  {{ exercice }}
-                </li>
-              </ul>
-              <div class="mt-4 flex space-x-4">
+        <ul class="list-disc pl-6 text-gray-700">
+          <li v-for="exercice in activeDay.exercices" :key="exercice">
+            {{ exercice }}
+          </li>
+        </ul>
+        <button
+          @click="stopProgram"
+          class="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+        >
+          Arrêter le programme
+        </button>
+      </div>
+      <div v-else>
+        <div v-for="semaine in program" :key="semaine.semaine" class="mb-6">
+          <h2 class="text-2xl font-semibold mb-4">
+            Semaine {{ semaine.semaine }}
+          </h2>
+          <ul class="space-y-2">
+            <li
+              v-for="jour in semaine.jours"
+              :key="jour.jour"
+              class="p-4 bg-gray-100 rounded shadow cursor-pointer"
+              @click="toggleDay(jour)"
+            >
+              <div class="flex justify-between items-center">
+                <strong>Jour {{ jour.jour }}</strong>
+                <span>{{ jour.open ? '▲' : '▼' }}</span>
+              </div>
+              <div v-if="jour.open" class="mt-2 text-gray-700">
+                <ul class="list-disc pl-6">
+                  <li v-for="exercice in jour.exercices" :key="exercice">
+                    {{ exercice }}
+                  </li>
+                </ul>
                 <button
                   @click.stop="startProgram(jour)"
-                  class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                  class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                 >
                   Lancer le programme
                 </button>
-                <button
-                  @click.stop="stopProgram(jour)"
-                  class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                >
-                  Arrêter le programme
-                </button>
               </div>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
