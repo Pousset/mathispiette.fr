@@ -42,6 +42,9 @@ const program = ref([
 ])
 
 const activeDay = ref(null) // Variable pour suivre le jour actif
+const currentExerciseIndex = ref(null) // Index de l'exercice en cours
+const timer = ref(null) // Timer pour l'exercice
+const timerRunning = ref(false) // Indique si le timer est en cours
 
 const toggleDay = jour => {
   jour.open = !jour.open
@@ -49,10 +52,41 @@ const toggleDay = jour => {
 
 const startProgram = jour => {
   activeDay.value = jour // Définit le jour actif
+  currentExerciseIndex.value = null // Réinitialise l'index de l'exercice
 }
 
 const stopProgram = () => {
   activeDay.value = null // Réinitialise le jour actif
+  currentExerciseIndex.value = null // Réinitialise l'index de l'exercice
+  timer.value = null // Réinitialise le timer
+  timerRunning.value = false // Arrête le timer
+}
+
+const startTraining = () => {
+  currentExerciseIndex.value = 0 // Commence par le premier exercice
+}
+
+const validateExercise = () => {
+  if (
+    currentExerciseIndex.value !== null &&
+    currentExerciseIndex.value < activeDay.value.exercices.length
+  ) {
+    timerRunning.value = true
+    timer.value = 90 // 1 minute 30 secondes
+
+    const interval = setInterval(() => {
+      if (timer.value > 0) {
+        timer.value--
+      } else {
+        clearInterval(interval)
+        timerRunning.value = false
+        currentExerciseIndex.value++ // Passe à l'exercice suivant
+        if (currentExerciseIndex.value >= activeDay.value.exercices.length) {
+          stopProgram() // Termine le programme si tous les exercices sont terminés
+        }
+      }
+    }, 1000)
+  }
 }
 </script>
 
@@ -68,11 +102,29 @@ const stopProgram = () => {
         <h2 class="text-2xl font-semibold mb-4">
           Programme du Jour {{ activeDay.jour }}
         </h2>
-        <ul class="list-disc pl-6 text-gray-700">
-          <li v-for="exercice in activeDay.exercices" :key="exercice">
-            {{ exercice }}
-          </li>
-        </ul>
+        <div v-if="currentExerciseIndex === null">
+          <button
+            @click="startTraining"
+            class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+          >
+            Démarrer l'entraînement
+          </button>
+        </div>
+        <div v-else>
+          <h3 class="text-xl font-semibold mb-4">
+            Exercice : {{ activeDay.exercices[currentExerciseIndex] }}
+          </h3>
+          <div v-if="timerRunning" class="text-lg font-bold text-red-500">
+            Temps restant : {{ Math.floor(timer / 60) }}m {{ timer % 60 }}s
+          </div>
+          <button
+            v-if="!timerRunning"
+            @click="validateExercise"
+            class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Valider
+          </button>
+        </div>
         <button
           @click="stopProgram"
           class="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
