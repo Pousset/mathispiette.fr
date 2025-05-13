@@ -31,7 +31,7 @@ html {
   flex-direction: column;
 }
 
-.container-sezioni {
+.container-six {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,7 +41,7 @@ html {
   width: 5%;
   text-align: center;
 }
-.container-sezioni img {
+.container-six img {
   width: auto;
   margin-bottom: 5px;
 }
@@ -355,7 +355,7 @@ a:focus {
   height: 15px;
   margin-right: 5px;
 }
-.container-sezioni-fine {
+.container-six-fine {
   display: flex;
   width: 100%;
   justify-content: flex-end;
