@@ -45,7 +45,7 @@ html {
   width: auto;
   margin-bottom: 5px;
 }
-.container-sezione {
+.container-sept {
   display: flex;
   justify-content: flex-start;
   align-content: center;
@@ -405,10 +405,10 @@ a:focus {
     width: 100%;
     margin-right: 10px;
   }
-  .container-sezione {
+  .container-sept {
     flex-direction: column;
   }
-  .container-sezione img {
+  .container-sept img {
     width: 30px;
     height: 30px;
   }
