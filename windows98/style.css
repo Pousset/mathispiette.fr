@@ -31,7 +31,7 @@ html {
   flex-direction: column;
 }
 
-.container-six {
+.container-sezioni {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,11 +41,11 @@ html {
   width: 5%;
   text-align: center;
 }
-.container-six img {
+.container-sezioni img {
   width: auto;
   margin-bottom: 5px;
 }
-.container-sept {
+.container-sezione {
   display: flex;
   justify-content: flex-start;
   align-content: center;
@@ -355,7 +355,7 @@ a:focus {
   height: 15px;
   margin-right: 5px;
 }
-.container-six-fine {
+.container-sezioni-fine {
   display: flex;
   width: 100%;
   justify-content: flex-end;
@@ -405,10 +405,10 @@ a:focus {
     width: 100%;
     margin-right: 10px;
   }
-  .container-sept {
+  .container-sezione {
     flex-direction: column;
   }
-  .container-sept img {
+  .container-sezione img {
     width: 30px;
     height: 30px;
   }
