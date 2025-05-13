@@ -1,4 +1,3 @@
-
 // Browser Detector
 var nVer = navigator.appVersion;
 var nAgt = navigator.userAgent;
@@ -106,5 +105,5 @@ textChrome.innerHTML = `You are already in ${browserDetectato}`;
 let newtab = document.getElementById("newtab");
 newtab.addEventListener("click", (evt) => {
   evt.preventDefault();
-  window.open("https://www.google.it/");
+  window.open("https://www.google.fr/");
 });
